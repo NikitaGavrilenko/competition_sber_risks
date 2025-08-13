@@ -1,0 +1,413 @@
+/* ===== БАЗОВЫЕ СТИЛИ И ГЛОБАЛЬНЫЕ НАСТРОЙКИ ===== */
+
+/* Сброс стилей и базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--gray-900);
+    background: var(--mesh-gradient-1), var(--mesh-gradient-2), linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%;
+    background-attachment: fixed;
+    transition: all var(--transition-spring);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga', 'kern';
+    text-rendering: optimizeLegibility;
+}
+
+/* Типографика - Futuristic */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--gray-100);
+    font-feature-settings: 'liga', 'kern', 'ss01';
+    letter-spacing: -0.025em;
+    text-rendering: optimizeLegibility;
+}
+
+h1 { 
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 50px rgba(139, 95, 248, 0.6),
+        0 0 100px rgba(139, 95, 248, 0.3),
+        0 0 150px rgba(139, 95, 248, 0.1);
+    filter: drop-shadow(0 0 30px rgba(139, 95, 248, 0.4));
+    animation: neonFlicker 6s ease-in-out infinite alternate;
+}
+
+h2 { 
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    background: var(--secondary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        0 0 40px rgba(0, 245, 255, 0.5),
+        0 0 80px rgba(0, 245, 255, 0.2);
+    filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3));
+}
+
+h3 { 
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--gray-200);
+}
+
+h4 { 
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    color: var(--gray-300);
+}
+
+h5 { 
+    font-size: clamp(1.125rem, 2vw, 1.25rem);
+    font-weight: 600;
+    color: var(--gray-400);
+}
+
+h6 { 
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    font-weight: 500;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: var(--gray-400);
+    font-weight: 400;
+    line-height: 1.8;
+    font-feature-settings: 'liga', 'kern';
+}
+
+p.lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--gray-300);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all var(--transition-spring);
+    position: relative;
+    font-weight: 500;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--primary-gradient);
+    transition: width var(--transition-spring);
+}
+
+a:hover {
+    color: var(--primary-light);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+/* Списки - Enhanced */
+ul, ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+li {
+    margin-bottom: 0.75rem;
+    color: var(--gray-400);
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+ul li::marker {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+ol li::marker {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+/* Изображения */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Кнопки - Enhanced */
+button {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all var(--transition-spring);
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    box-shadow: var(--shadow-glow);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Поля ввода - Futuristic */
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: 1rem 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: var(--blur-md);
+    color: var(--gray-200);
+    transition: all var(--transition-spring);
+    font-weight: 500;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.2), var(--primary-glow);
+    background: var(--glass-bg-dark);
+    transform: scale(1.02);
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--gray-500);
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Скроллбар - Neon */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--glass-bg-dark);
+    border-radius: var(--radius-full);
+    border: 1px solid var(--glass-border);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-spring);
+    box-shadow: var(--primary-glow);
+    border: 1px solid var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-gradient);
+    box-shadow: var(--accent-glow);
+    transform: scale(1.1);
+}
+
+/* Выделение текста - Neon */
+::selection {
+    background: var(--primary-gradient);
+    color: var(--white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+::-moz-selection {
+    background: var(--primary-gradient);
+    color: var(--white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Фокус для доступности - Enhanced */
+:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+    box-shadow: var(--shadow-glow);
+}
+
+/* Утилиты для скрытия */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Утилиты для отображения */
+.hidden { display: none !important; }
+.block { display: block !important; }
+.inline { display: inline !important; }
+.inline-block { display: inline-block !important; }
+.flex { display: flex !important; }
+.inline-flex { display: inline-flex !important; }
+.grid { display: grid !important; }
+
+/* Утилиты для позиционирования */
+.relative { position: relative !important; }
+.absolute { position: absolute !important; }
+.fixed { position: fixed !important; }
+.sticky { position: sticky !important; }
+
+/* Утилиты для размеров */
+.w-full { width: 100% !important; }
+.h-full { height: 100% !important; }
+.min-h-screen { min-height: 100vh !important; }
+
+/* Утилиты для отступов */
+.p-0 { padding: 0 !important; }
+.p-1 { padding: 0.25rem !important; }
+.p-2 { padding: 0.5rem !important; }
+.p-3 { padding: 0.75rem !important; }
+.p-4 { padding: 1rem !important; }
+.p-5 { padding: 1.25rem !important; }
+.p-6 { padding: 1.5rem !important; }
+
+.m-0 { margin: 0 !important; }
+.m-1 { margin: 0.25rem !important; }
+.m-2 { margin: 0.5rem !important; }
+.m-3 { margin: 0.75rem !important; }
+.m-4 { margin: 1rem !important; }
+.m-5 { margin: 1.25rem !important; }
+.m-6 { margin: 1.5rem !important; }
+
+/* Утилиты для текста */
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-justify { text-align: justify !important; }
+
+.text-xs { font-size: 0.75rem !important; }
+.text-sm { font-size: 0.875rem !important; }
+.text-base { font-size: 1rem !important; }
+.text-lg { font-size: 1.125rem !important; }
+.text-xl { font-size: 1.25rem !important; }
+.text-2xl { font-size: 1.5rem !important; }
+
+.font-light { font-weight: 300 !important; }
+.font-normal { font-weight: 400 !important; }
+.font-medium { font-weight: 500 !important; }
+.font-semibold { font-weight: 600 !important; }
+.font-bold { font-weight: 700 !important; }
+.font-extrabold { font-weight: 800 !important; }
+
+/* Утилиты для цветов */
+.text-primary { color: var(--primary-color) !important; }
+.text-secondary { color: var(--secondary-color) !important; }
+.text-success { color: var(--success-color) !important; }
+.text-warning { color: var(--warning-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+.text-info { color: var(--info-color) !important; }
+
+.bg-primary { background-color: var(--primary-color) !important; }
+.bg-secondary { background-color: var(--secondary-color) !important; }
+.bg-success { background-color: var(--success-color) !important; }
+.bg-warning { background-color: var(--warning-color) !important; }
+.bg-danger { background-color: var(--danger-color) !important; }
+.bg-info { background-color: var(--info-color) !important; }
+
+/* Утилиты для границ */
+.border { border: 1px solid var(--gray-300) !important; }
+.border-0 { border: 0 !important; }
+.border-t { border-top: 1px solid var(--gray-300) !important; }
+.border-b { border-bottom: 1px solid var(--gray-300) !important; }
+.border-l { border-left: 1px solid var(--gray-300) !important; }
+.border-r { border-right: 1px solid var(--gray-300) !important; }
+
+.rounded { border-radius: var(--radius-md) !important; }
+.rounded-sm { border-radius: var(--radius-sm) !important; }
+.rounded-lg { border-radius: var(--radius-lg) !important; }
+.rounded-xl { border-radius: var(--radius-xl) !important; }
+.rounded-full { border-radius: var(--radius-full) !important; }
+
+/* Утилиты для теней */
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow { box-shadow: var(--shadow-md) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+.shadow-xl { box-shadow: var(--shadow-xl) !important; }
+.shadow-2xl { box-shadow: var(--shadow-2xl) !important; }
+.shadow-none { box-shadow: none !important; }
+
+/* Утилиты для flexbox */
+.flex-row { flex-direction: row !important; }
+.flex-col { flex-direction: column !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.flex-nowrap { flex-wrap: nowrap !important; }
+.items-start { align-items: flex-start !important; }
+.items-center { align-items: center !important; }
+.items-end { align-items: flex-end !important; }
+.justify-start { justify-content: flex-start !important; }
+.justify-center { justify-content: center !important; }
+.justify-end { justify-content: flex-end !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-around { justify-content: space-around !important; }
+
+/* Утилиты для grid */
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+
+/* Утилиты для переходов */
+.transition { transition: all var(--transition-normal) !important; }
+.transition-fast { transition: all var(--transition-fast) !important; }
+.transition-slow { transition: all var(--transition-slow) !important; }
+
+/* Утилиты для курсора */
+.cursor-pointer { cursor: pointer !important; }
+.cursor-default { cursor: default !important; }
+.cursor-not-allowed { cursor: not-allowed !important; }
+
+/* Утилиты для overflow */
+.overflow-hidden { overflow: hidden !important; }
+.overflow-auto { overflow: auto !important; }
+.overflow-scroll { overflow: scroll !important; }
+.overflow-x-auto { overflow-x: auto !important; }
+.overflow-y-auto { overflow-y: auto !important; }

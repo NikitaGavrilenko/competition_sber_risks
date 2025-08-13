@@ -1,0 +1,704 @@
+/* ===== ПРЕМИУМ АНИМАЦИИ И ЭФФЕКТЫ 2025 - ДИЗАЙН НА 10 БАЛЛОВ ===== */
+
+/* Основные анимации - Улучшенные */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px) rotateY(-15deg);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px) rotateY(15deg);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(80px) rotateX(-15deg);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-80px) rotateX(15deg);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.3) rotateZ(-10deg);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1) rotateZ(5deg);
+        filter: blur(2px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.1) rotateZ(-360deg);
+        filter: blur(20px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotateZ(-180deg);
+        filter: blur(5px);
+    }
+    70% {
+        transform: scale(0.9) rotateZ(0deg);
+        filter: blur(1px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) rotateZ(0deg);
+        filter: hue-rotate(0deg);
+    }
+    33% {
+        transform: translateY(-15px) rotateZ(1deg);
+        filter: hue-rotate(30deg);
+    }
+    66% {
+        transform: translateY(-5px) rotateZ(-1deg);
+        filter: hue-rotate(-30deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+        filter: brightness(1) saturate(1);
+    }
+    50% {
+        transform: scale(1.08);
+        opacity: 0.9;
+        filter: brightness(1.2) saturate(1.3);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(139, 95, 248, 0.4),
+            0 0 40px rgba(139, 95, 248, 0.2),
+            0 0 60px rgba(139, 95, 248, 0.1);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 30px rgba(139, 95, 248, 0.8),
+            0 0 60px rgba(139, 95, 248, 0.4),
+            0 0 90px rgba(139, 95, 248, 0.2);
+        filter: brightness(1.3);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(90deg);
+    }
+    100% {
+        background-position: 200% center;
+        filter: hue-rotate(180deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg) scale(1);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+        filter: hue-rotate(180deg);
+    }
+    to {
+        transform: rotate(360deg) scale(1);
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Специальные эффекты - Премиум */
+@keyframes neonFlicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+            0 0 5px #fff,
+            0 0 15px #fff,
+            0 0 25px #fff,
+            0 0 50px var(--primary-color),
+            0 0 100px var(--primary-color),
+            0 0 120px var(--primary-color),
+            0 0 150px var(--primary-color),
+            0 0 200px var(--primary-color);
+        filter: brightness(1.5) saturate(1.5);
+    }
+    20%, 24%, 55% {
+        text-shadow: 
+            0 0 2px #fff,
+            0 0 5px var(--primary-color);
+        filter: brightness(0.8) saturate(0.8);
+    }
+}
+
+@keyframes hologram {
+    0% {
+        opacity: 1;
+        transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+        filter: brightness(1) hue-rotate(0deg);
+    }
+    25% {
+        opacity: 0.7;
+        transform: translateZ(20px) rotateX(5deg) rotateY(10deg);
+        filter: brightness(1.2) hue-rotate(90deg);
+    }
+    50% {
+        opacity: 0.9;
+        transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+        filter: brightness(0.9) hue-rotate(180deg);
+    }
+    75% {
+        opacity: 0.6;
+        transform: translateZ(-20px) rotateX(-5deg) rotateY(-10deg);
+        filter: brightness(1.3) hue-rotate(270deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateZ(0) rotateX(0deg) rotateY(0deg);
+        filter: brightness(1) hue-rotate(360deg);
+    }
+}
+
+@keyframes dataStream {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+    25% {
+        transform: translateY(-25px) translateX(10px);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-50px) translateX(-10px);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateY(-75px) translateX(5px);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-100px) translateX(0);
+        opacity: 0;
+    }
+}
+
+@keyframes energyWave {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+        filter: blur(0);
+    }
+    50% {
+        transform: scale(2) rotate(180deg);
+        opacity: 0.5;
+        filter: blur(5px);
+    }
+    100% {
+        transform: scale(4) rotate(360deg);
+        opacity: 0;
+        filter: blur(10px);
+    }
+}
+
+@keyframes matrixRain {
+    0% {
+        transform: translateY(-100vh) rotateZ(0deg);
+        opacity: 0;
+        filter: hue-rotate(0deg);
+    }
+    10% {
+        opacity: 1;
+        filter: hue-rotate(90deg);
+    }
+    50% {
+        filter: hue-rotate(180deg);
+    }
+    90% {
+        opacity: 1;
+        filter: hue-rotate(270deg);
+    }
+    100% {
+        transform: translateY(100vh) rotateZ(360deg);
+        opacity: 0;
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Новые премиум анимации */
+@keyframes quantumFlicker {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    25% {
+        opacity: 0.3;
+        transform: scale(0.8);
+        filter: brightness(2);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        filter: brightness(0.5);
+    }
+    75% {
+        opacity: 0.7;
+        transform: scale(0.9);
+        filter: brightness(1.5);
+    }
+}
+
+@keyframes cyberpunkGlow {
+    0%, 100% {
+        opacity: 0.8;
+        filter: brightness(1) saturate(1) hue-rotate(0deg);
+    }
+    33% {
+        opacity: 1;
+        filter: brightness(1.5) saturate(1.5) hue-rotate(120deg);
+    }
+    66% {
+        opacity: 0.9;
+        filter: brightness(1.2) saturate(1.2) hue-rotate(240deg);
+    }
+}
+
+@keyframes glassShimmer {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+@keyframes neonFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+        filter: blur(20px) brightness(0);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(10px) scale(1.05);
+        filter: blur(5px) brightness(1.5);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes hologramAppear {
+    0% {
+        opacity: 0;
+        transform: translateZ(-50px) rotateX(-15deg) scale(0.8);
+        filter: blur(10px) brightness(0.5);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateZ(10px) rotateX(5deg) scale(1.1);
+        filter: blur(2px) brightness(1.3);
+    }
+    100% {
+        opacity: 1;
+        transform: translateZ(0) rotateX(0deg) scale(1);
+        filter: blur(0) brightness(1);
+    }
+}
+
+@keyframes cardFloat3D {
+    0%, 100% {
+        transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        box-shadow: 0 10px 30px rgba(139, 95, 248, 0.2);
+    }
+    25% {
+        transform: translateY(-5px) rotateX(2deg) rotateY(2deg) rotateZ(0.5deg);
+        box-shadow: 0 15px 40px rgba(0, 245, 255, 0.3);
+    }
+    50% {
+        transform: translateY(-8px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        box-shadow: 0 20px 50px rgba(255, 107, 157, 0.4);
+    }
+    75% {
+        transform: translateY(-5px) rotateX(-2deg) rotateY(-2deg) rotateZ(-0.5deg);
+        box-shadow: 0 15px 40px rgba(0, 255, 153, 0.3);
+    }
+}
+
+@keyframes criticalPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 20px rgba(255, 0, 102, 0.5),
+            0 0 40px rgba(255, 0, 102, 0.3),
+            0 0 60px rgba(255, 0, 102, 0.1);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow: 
+            0 0 40px rgba(255, 0, 102, 0.8),
+            0 0 80px rgba(255, 0, 102, 0.5),
+            0 0 120px rgba(255, 0, 102, 0.3);
+        filter: brightness(1.3);
+    }
+}
+
+@keyframes riskIndicatorPop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3) rotate(180deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(360deg);
+    }
+}
+
+@keyframes matrixPulse {
+    0%, 100% {
+        box-shadow: 
+            inset 0 0 150px rgba(139, 95, 248, 0.15),
+            inset 0 0 100px rgba(0, 245, 255, 0.1),
+            inset 0 0 80px rgba(255, 107, 157, 0.08),
+            0 20px 60px rgba(139, 95, 248, 0.3),
+            0 0 100px rgba(139, 95, 248, 0.2);
+        filter: brightness(1);
+    }
+    50% {
+        box-shadow: 
+            inset 0 0 200px rgba(139, 95, 248, 0.25),
+            inset 0 0 150px rgba(0, 245, 255, 0.15),
+            inset 0 0 120px rgba(255, 107, 157, 0.12),
+            0 30px 80px rgba(139, 95, 248, 0.4),
+            0 0 150px rgba(139, 95, 248, 0.3);
+        filter: brightness(1.1);
+    }
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    40% {
+        transform: translateY(-30px) scale(1.1);
+    }
+    60% {
+        transform: translateY(-15px) scale(1.05);
+    }
+}
+
+/* 3D трансформации - Улучшенные */
+@keyframes flipIn {
+    from {
+        opacity: 0;
+        transform: perspective(600px) rotateX(-90deg) scale(0.8);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: perspective(600px) rotateX(-45deg) scale(1.1);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(600px) rotateX(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: perspective(600px) rotateY(-180deg) scale(0.8);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: perspective(600px) rotateY(-90deg) scale(1.1);
+        filter: blur(3px);
+    }
+    to {
+        opacity: 1;
+        transform: perspective(600px) rotateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Анимации для интерактивных элементов - Улучшенные */
+@keyframes buttonPress {
+    0% {
+        transform: scale(1) rotateZ(0deg);
+        filter: brightness(1);
+    }
+    50% {
+        transform: scale(0.92) rotateZ(2deg);
+        filter: brightness(1.2);
+    }
+    100% {
+        transform: scale(1) rotateZ(0deg);
+        filter: brightness(1);
+    }
+}
+
+@keyframes cardHover {
+    0% {
+        transform: translateY(0) rotateX(0) rotateY(0) scale(1);
+        filter: brightness(1);
+    }
+    100% {
+        transform: translateY(-15px) rotateX(8deg) rotateY(8deg) scale(1.02);
+        filter: brightness(1.1);
+    }
+}
+
+@keyframes iconSpin {
+    from {
+        transform: rotate(0deg) scale(1);
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+        filter: hue-rotate(180deg);
+    }
+    to {
+        transform: rotate(360deg) scale(1);
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Классы анимаций - Основные */
+.animate-fadeIn { animation: fadeIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.animate-fadeInScale { animation: scaleIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.animate-slideInLeft { animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.animate-slideInRight { animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.animate-slideInUp { animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.animate-slideInDown { animation: slideInDown 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.animate-flipIn { animation: flipIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.animate-rotateIn { animation: rotateIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.animate-bounceIn { animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+
+/* Классы анимаций - Премиум */
+.animate-neon-fade-in { animation: neonFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+.animate-hologram-appear { animation: hologramAppear 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* Анимации зацикленные - Классы */
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-pulse { animation: pulse 2.5s ease-in-out infinite; }
+.animate-glow { animation: glow 3s ease-in-out infinite; }
+.animate-shimmer { 
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite; 
+}
+.animate-spin { animation: spin 3s linear infinite; }
+.animate-bounce { animation: bounce 2s infinite; }
+.animate-wave { animation: wave 2s infinite; }
+.animate-gradient { animation: gradientFlow 3s infinite; }
+
+/* Анимации специальных эффектов */
+.animate-neon-flicker { animation: neonFlicker 2s infinite alternate; }
+.animate-hologram { animation: hologram 6s ease-in-out infinite; }
+.animate-data-stream { animation: dataStream 30s linear infinite; }
+.animate-quantum-flicker { animation: quantumFlicker 3s infinite; }
+.animate-cyberpunk-glow { animation: cyberpunkGlow 2s ease-in-out infinite; }
+.animate-card-float-3d { animation: cardFloat3D 4s ease-in-out infinite; }
+.animate-critical-pulse { animation: criticalPulse 2s ease-in-out infinite; }
+
+/* Анимации при наведении - Улучшенные */
+.hover-lift {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    filter: brightness(1.1);
+}
+
+.hover-scale {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-scale:hover {
+    transform: scale(1.08) rotateZ(2deg);
+    filter: brightness(1.15);
+}
+
+.hover-glow {
+    transition: all 0.4s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: 
+        0 15px 35px rgba(139, 95, 248, 0.4),
+        0 5px 15px rgba(139, 95, 248, 0.2);
+    filter: brightness(1.2);
+}
+
+.hover-rotate {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.hover-rotate:hover {
+    transform: rotate(8deg) scale(1.05);
+    filter: hue-rotate(30deg);
+}
+
+.hover-3d {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-style: preserve-3d;
+}
+
+.hover-3d:hover {
+    transform: translateY(-10px) rotateX(15deg) rotateY(15deg);
+    filter: brightness(1.2);
+}
+
+/* Задержки анимации - Расширенные */
+.delay-50 { animation-delay: 0.05s; }
+.delay-100 { animation-delay: 0.1s; }
+.delay-150 { animation-delay: 0.15s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-700 { animation-delay: 0.7s; }
+.delay-1000 { animation-delay: 1s; }
+.delay-1500 { animation-delay: 1.5s; }
+
+/* Длительность анимаций */
+.duration-300 { animation-duration: 300ms; }
+.duration-500 { animation-duration: 500ms; }
+.duration-700 { animation-duration: 700ms; }
+.duration-1000 { animation-duration: 1000ms; }
+.duration-1500 { animation-duration: 1500ms; }
+.duration-2000 { animation-duration: 2000ms; }
+
+/* Режимы анимаций - Улучшенные */
+.ease-in { animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
+.ease-out { animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+.ease-in-out { animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+.ease-bounce { animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+.ease-spring { animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.linear { animation-timing-function: linear; }
+
+/* Количество повторений */
+.infinite { animation-iteration-count: infinite; }
+.once { animation-iteration-count: 1; }
+.twice { animation-iteration-count: 2; }
+.thrice { animation-iteration-count: 3; }
+
+/* Направление анимации */
+.alternate { animation-direction: alternate; }
+.reverse { animation-direction: reverse; }
+.alternate-reverse { animation-direction: alternate-reverse; }
+
+/* Состояние анимации */
+.paused { animation-play-state: paused; }
+.running { animation-play-state: running; }
+
+/* Режим заполнения */
+.forwards { animation-fill-mode: forwards; }
+.backwards { animation-fill-mode: backwards; }
+.both { animation-fill-mode: both; }

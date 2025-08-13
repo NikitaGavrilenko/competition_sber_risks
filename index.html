@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#7c3aed">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Карта рисков">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <title>Карта рисков отрасли гостеприимства 2025 - Матрица рисков</title>
+    <!-- Основные стили -->
+    <link rel="preload" href="new-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="new-styles.css"></noscript>
+    
+    <!-- Анимации -->
+    <link rel="preload" href="css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/animations.css"></noscript>
+    
+    <!-- Адаптивность -->
+    <link rel="preload" href="mobile-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="mobile-styles.css"></noscript>
+    
+    <!-- Темная тема -->
+    <link rel="preload" href="css/dark-theme.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/dark-theme.css"></noscript>
+    
+    <!-- Шрифты и иконки -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Иконки для мобильных устройств -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    <link rel="manifest" href="data:application/manifest+json,{&quot;name&quot;:&quot;Карта рисков&quot;,&quot;short_name&quot;:&quot;Риски&quot;,&quot;description&quot;:&quot;Матрица рисков отрасли гостеприимства&quot;,&quot;start_url&quot;:&quot;/&quot;,&quot;display&quot;:&quot;standalone&quot;,&quot;background_color&quot;:&quot;#0a0a0a&quot;,&quot;theme_color&quot;:&quot;#7c3aed&quot;,&quot;icons&quot;:[{&quot;src&quot;:&quot;data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>&quot;,&quot;sizes&quot;:&quot;any&quot;,&quot;type&quot;:&quot;image/svg+xml&quot;}]}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Гостеприимство 2025</h1>
+                <p>Матрица рисков отрасли</p>
+                <div class="header-decoration">
+                    <div class="decoration-line"></div>
+                    <div class="decoration-dot"></div>
+                    <div class="decoration-line"></div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>ВИД ОТОБРАЖЕНИЯ</h3>
+                <ul class="view-list">
+                    <li class="active" data-view="matrix">
+                        <i class="fas fa-th"></i>
+                        <span>Матрица рисков</span>
+                    </li>
+                    <li data-view="cards">
+                        <i class="fas fa-th-large"></i>
+                        <span>Карточки</span>
+                    </li>
+                    <li data-view="list">
+                        <i class="fas fa-list"></i>
+                        <span>Список</span>
+                    </li>
+                    <li data-view="report">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Отчет</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>КАТЕГОРИИ РИСКОВ</h3>
+                <ul class="category-list">
+                    <li class="active" data-category="all">
+                        <i class="fas fa-globe"></i>
+                        <span>Все риски</span>
+                        <span class="count">70</span>
+                    </li>
+                    <li data-category="operational">
+                        <i class="fas fa-cogs"></i>
+                        <span>Операционные</span>
+                        <span class="count">14</span>
+                    </li>
+                    <li data-category="hr">
+                        <i class="fas fa-users"></i>
+                        <span>Кадровые</span>
+                        <span class="count">12</span>
+                    </li>
+                    <li data-category="financial">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Финансовые</span>
+                        <span class="count">10</span>
+                    </li>
+                    <li data-category="reputation">
+                        <i class="fas fa-star"></i>
+                        <span>Репутационные</span>
+                        <span class="count">9</span>
+                    </li>
+                    <li data-category="security">
+                        <i class="fas fa-lock"></i>
+                        <span>Безопасность</span>
+                        <span class="count">10</span>
+                    </li>
+                    <li data-category="external">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span>Внешние</span>
+                        <span class="count">15</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>УРОВЕНЬ РИСКА</h3>
+                <div class="risk-filter">
+                    <label>
+                        <input type="checkbox" value="critical" checked>
+                        <span class="risk-level-indicator critical"></span>
+                        <span>Критический</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="high" checked>
+                        <span class="risk-level-indicator high"></span>
+                        <span>Высокий</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="medium" checked>
+                        <span class="risk-level-indicator medium"></span>
+                        <span>Средний</span>
+                    </label>
+                    <label>
+                        <input type="checkbox" value="low" checked>
+                        <span class="risk-level-indicator low"></span>
+                        <span>Низкий</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>ЗОНЫ МАТРИЦЫ</h3>
+                <div class="matrix-zones">
+                    <div class="zone-item critical">
+                        <span class="zone-color"></span>
+                        <span>Критическая (Красная)</span>
+                    </div>
+                    <div class="zone-item high">
+                        <span class="zone-color"></span>
+                        <span>Высокая (Оранжевая)</span>
+                    </div>
+                    <div class="zone-item medium">
+                        <span class="zone-color"></span>
+                        <span>Средняя (Желтая)</span>
+                    </div>
+                    <div class="zone-item low">
+                        <span class="zone-color"></span>
+                        <span>Низкая (Зеленая)</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Заголовок -->
+            <header class="header">
+                <div class="header-content">
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" title="Открыть меню">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="header-title-section">
+                        <h1>Карта рисков гостеприимства</h1>
+                        <p class="header-subtitle">Интерактивная матрица рисков 2025</p>
+                    </div>
+                    <div class="header-stats">
+                        <span class="stat-badge">
+                            <i class="fas fa-chart-line"></i>
+                            <span>70</span>
+                        </span>
+                        <span class="stat-badge">
+                            <i class="fas fa-layer-group"></i>
+                            <span>6 кат.</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="downloadExcel()" title="Скачать Excel">
+                        <i class="fas fa-download"></i>
+                        Excel
+                    </button>
+                    <button class="btn btn-outline" onclick="downloadCSV()" title="Скачать CSV">
+                        <i class="fas fa-file-csv"></i>
+                        CSV
+                    </button>
+                    <button class="btn btn-outline btn-theme" onclick="toggleTheme()" id="themeToggle" title="Переключить тему">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Поиск -->
+            <div class="search-section">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Поиск по рискам, последствиям, мерам...">
+                    <button class="clear-search" onclick="clearSearch()" title="Очистить поиск">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Матрица рисков -->
+            <div class="matrix-container">
+                <div class="matrix-header">
+                    <h2>Матрица рисков</h2>
+                    <p>Интерактивная матрица для оценки и визуализации рисков по вероятности и последствиям</p>
+                </div>
+                
+                <!-- Оси матрицы - УБРАНЫ -->
+                
+                <div class="matrix-grid" id="matrixGrid">
+                    <!-- Матрица будет создана JavaScript -->
+                </div>
+                
+                <div class="matrix-legend">
+                    <h3>Легенда матрицы</h3>
+                    <div class="legend-items">
+                        <div class="legend-item">
+                            <div class="legend-color critical"></div>
+                            <span>Критический риск</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color high"></div>
+                            <span>Высокий риск</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color medium"></div>
+                            <span>Средний риск</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color low"></div>
+                            <span>Низкий риск</span>
+                        </div>
+                    </div>
+                    <div class="matrix-explanation">
+                        <p><strong>По вертикали:</strong> Последствия (сверху вниз: от критических до минимальных)</p>
+                        <p><strong>По горизонтали:</strong> Вероятность (слева направо: от очень низкой до очень высокой)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Статистика -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon critical">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="criticalCount">0</h3>
+                        <p>Критические риски</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon high">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="highCount">0</h3>
+                        <p>Высокие риски</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon medium">
+                        <i class="fas fa-minus-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="mediumCount">0</h3>
+                        <p>Средние риски</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon low">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="lowCount">0</h3>
+                        <p>Низкие риски</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Контейнер для карточек и списка (скрыт по умолчанию) -->
+            <div class="risks-container" id="risksContainer" style="display: none;">
+                <div class="risks-grid" id="risksGrid">
+                    <!-- Карточки рисков будут добавлены через JavaScript -->
+                </div>
+                
+                <!-- Пагинация -->
+                <div class="pagination" id="pagination">
+                    <!-- Пагинация будет добавлена через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Контейнер для отчета (скрыт по умолчанию) -->
+            <div class="report-container" id="reportContainer" style="display: none;">
+                <div class="report-header">
+                    <h2>Отчет по карте рисков отрасли гостеприимства 2025</h2>
+                    <p>Комплексный анализ рисков и рекомендации по управлению</p>
+                </div>
+                
+                <div class="report-content">
+                    <!-- Методика -->
+                    <section class="report-section">
+                        <h3><i class="fas fa-cogs"></i> Методология</h3>
+                        <div class="methodology-content">
+                            <h4>Подход к структурированию рисков</h4>
+                            <p>Карта рисков создана на основе системного подхода к анализу рисков в отрасли гостеприимства с использованием следующих методологических принципов:</p>
+                            
+                            <h5>Категоризация рисков</h5>
+                            <p>Риски структурированы по 6 основным категориям:</p>
+                            <ul>
+                                <li><strong>Операционные и технологические риски</strong> (14 рисков)</li>
+                                <li><strong>Кадровые и HR риски</strong> (12 рисков)</li>
+                                <li><strong>Финансовые и экономические риски</strong> (10 рисков)</li>
+                                <li><strong>Репутационные и маркетинговые риски</strong> (9 рисков)</li>
+                                <li><strong>Безопасность и комплаенс</strong> (10 рисков)</li>
+                                <li><strong>Внешние риски</strong> (15 рисков)</li>
+                            </ul>
+
+                            <h5>Матрица оценки рисков</h5>
+                            <p>Использована классическая матрица рисков 5x5, где:</p>
+                            <ul>
+                                <li><strong>Ось X</strong>: Вероятность возникновения (1-5 баллов)</li>
+                                <li><strong>Ось Y</strong>: Последствия (1-5 баллов)</li>
+                                <li><strong>Общий риск</strong>: Сумма баллов вероятности и последствий</li>
+                            </ul>
+
+                            <div class="risk-zones">
+                                <h5>Зоны риска:</h5>
+                                <div class="zone-item critical">
+                                    <span class="zone-color"></span>
+                                    <span><strong>Критическая (8-10 баллов)</strong>: Немедленные действия</span>
+                                </div>
+                                <div class="zone-item high">
+                                    <span class="zone-color"></span>
+                                    <span><strong>Высокая (6-7 баллов)</strong>: Приоритетное внимание</span>
+                                </div>
+                                <div class="zone-item medium">
+                                    <span class="zone-color"></span>
+                                    <span><strong>Средняя (4-5 баллов)</strong>: Мониторинг</span>
+                                </div>
+                                <div class="zone-item low">
+                                    <span class="zone-color"></span>
+                                    <span><strong>Низкая (2-3 балла)</strong>: Принятие к сведению</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Статистика -->
+                    <section class="report-section">
+                        <h3><i class="fas fa-chart-pie"></i> Статистический анализ</h3>
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number" id="totalRisksReport">70</div>
+                                <div class="stat-label">Общее количество рисков</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="criticalRisksReport">0</div>
+                                <div class="stat-label">Критические риски</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="highRisksReport">0</div>
+                                <div class="stat-label">Высокие риски</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="mediumRisksReport">0</div>
+                                <div class="stat-label">Средние риски</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number" id="lowRisksReport">0</div>
+                                <div class="stat-label">Низкие риски</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">6</div>
+                                <div class="stat-label">Категорий рисков</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Ключевые выводы -->
+                    <section class="report-section">
+                        <h3><i class="fas fa-lightbulb"></i> Ключевые выводы</h3>
+                        <div class="insights-grid">
+                            <div class="insight-card">
+                                <div class="insight-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h4>Критические риски</h4>
+                                <p>Наибольшую угрозу представляют кибератаки, сбои в системах бронирования и отказ инженерных систем. Требуют немедленного внимания и инвестиций в безопасность.</p>
+                            </div>
+                            <div class="insight-card">
+                                <div class="insight-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4>Кадровые риски</h4>
+                                <p>Высокая текучесть кадров и нехватка квалифицированного персонала остаются серьезными проблемами отрасли. Необходимы программы удержания и развития сотрудников.</p>
+                            </div>
+                            <div class="insight-card">
+                                <div class="insight-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Финансовые риски</h4>
+                                <p>Волатильность валютных курсов и экономическая нестабильность требуют диверсификации источников дохода и хеджирования валютных рисков.</p>
+                            </div>
+                            <div class="insight-card">
+                                <div class="insight-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h4>Безопасность</h4>
+                                <p>Кибербезопасность и физическая безопасность гостей являются приоритетными направлениями для инвестиций в 2025 году.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Рекомендации -->
+                    <section class="report-section">
+                        <h3><i class="fas fa-tasks"></i> Рекомендации</h3>
+                        <div class="recommendations-list">
+                            <div class="recommendation-item">
+                                <div class="rec-number">1</div>
+                                <div class="rec-content">
+                                    <h4>Усилить кибербезопасность</h4>
+                                    <p>Внедрить комплексные системы защиты данных, регулярно проводить аудиты безопасности и обучение персонала.</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-item">
+                                <div class="rec-number">2</div>
+                                <div class="rec-content">
+                                    <h4>Модернизировать IT-инфраструктуру</h4>
+                                    <p>Переход на облачные решения, резервирование критических систем, интеграция с множественными каналами бронирования.</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-item">
+                                <div class="rec-number">3</div>
+                                <div class="rec-content">
+                                    <h4>Развивать программы удержания персонала</h4>
+                                    <p>Улучшение условий труда, программы обучения и развития, конкурентная заработная плата.</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-item">
+                                <div class="rec-number">4</div>
+                                <div class="rec-content">
+                                    <h4>Диверсифицировать источники дохода</h4>
+                                    <p>Развитие дополнительных услуг, партнерства с местными бизнесами, создание уникальных предложений.</p>
+                                </div>
+                            </div>
+                            <div class="recommendation-item">
+                                <div class="rec-number">5</div>
+                                <div class="rec-content">
+                                    <h4>Улучшить управление репутацией</h4>
+                                    <p>Активное управление отзывами, прозрачная коммуникация с гостями, быстрая реакция на инциденты.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                                         <!-- Источники данных -->
+                     <section class="report-section">
+                         <h3><i class="fas fa-database"></i> Источники данных</h3>
+                         <div class="sources-list">
+                             <div class="source-item">
+                                 <i class="fas fa-building"></i>
+                                 <span>Отчеты консалтинговых компаний (PwC, Deloitte, KPMG)</span>
+                             </div>
+                             <div class="source-item">
+                                 <i class="fas fa-globe"></i>
+                                 <span>Исследования отраслевых ассоциаций (AHLA, WTTC)</span>
+                             </div>
+                             <div class="source-item">
+                                 <i class="fas fa-lock"></i>
+                                 <span>Статистика кибербезопасности (IBM Security, Verizon DBIR)</span>
+                             </div>
+                             <div class="source-item">
+                                 <i class="fas fa-chart-bar"></i>
+                                 <span>Экономические прогнозы (IMF, World Bank)</span>
+                             </div>
+                             <div class="source-item">
+                                 <i class="fas fa-gavel"></i>
+                                 <span>Регуляторные требования (GDPR, PCI DSS, ISO 27001)</span>
+                             </div>
+                         </div>
+                     </section>
+
+                     <!-- Использованные промпты -->
+                     <section class="report-section">
+                         <h3><i class="fas fa-robot"></i> Использованные промпты</h3>
+                         <div class="prompts-container">
+                             <div class="prompt-item">
+                                 <div class="prompt-header">
+                                     <span class="prompt-number">1</span>
+                                     <h4>Инициализация проекта</h4>
+                                 </div>
+                                 <div class="prompt-content">
+                                     <p>Создай интерактивную карту рисков для отрасли гостеприимства на 2025 год. Требования: 70+ рисков, структурированных по категориям, матрица рисков 5x5 с визуализацией, детальное описание каждого риска с последствиями и мерами митигации, возможность экспорта в Excel с колонками: Категория риска, Риск, Последствия, Меры митигации, современный адаптивный дизайн, фильтрация и поиск по рискам.</p>
+                                 </div>
+                             </div>
+                             
+                             <div class="prompt-item">
+                                 <div class="prompt-header">
+                                     <span class="prompt-number">2</span>
+                                     <h4>Структурирование данных</h4>
+                                 </div>
+                                 <div class="prompt-content">
+                                     <p>Создай структуру данных для 70 рисков отрасли гостеприимства. Каждый риск должен содержать: уникальный ID, категорию (операционные, кадровые, финансовые, репутационные, безопасность, внешние), название риска, уровень риска (критический, высокий, средний, низкий), вероятность (высокая, средняя, низкая), детальное описание последствий с конкретными цифрами, конкретные меры по снижению риска, иконку для визуализации.</p>
+                                 </div>
+                             </div>
+                             
+                             <div class="prompt-item">
+                                 <div class="prompt-header">
+                                     <span class="prompt-number">3</span>
+                                     <h4>Категоризация рисков</h4>
+                                 </div>
+                                 <div class="prompt-content">
+                                     <p>Определи 6 основных категорий рисков для отрасли гостеприимства и распредели 70 рисков по ним: операционные и технологические риски, кадровые и HR риски, финансовые и экономические риски, репутационные и маркетинговые риски, безопасность и комплаенс, внешние риски. Каждая категория должна содержать 10-15 рисков с разными уровнями критичности.</p>
+                                 </div>
+                             </div>
+                             
+                             <div class="prompt-item">
+                                 <div class="prompt-header">
+                                     <span class="prompt-number">4</span>
+                                     <h4>Детализация рисков</h4>
+                                 </div>
+                                 <div class="prompt-content">
+                                     <p>Для каждого риска создай детальное описание: название (конкретное и понятное), последствия (включая финансовые потери, репутационный ущерб, операционные сбои с конкретными цифрами), меры митигации (конкретные действия, технологии, процедуры), вероятность (обоснованная оценка на основе текущих трендов), уровень риска (рассчитанный на основе матрицы вероятности и последствий). Используй актуальные данные 2024-2025 годов.</p>
+                                 </div>
+                             </div>
+                             
+                             <div class="prompt-item">
+                                 <div class="prompt-header">
+                                     <span class="prompt-number">5</span>
+                                     <h4>Визуализация и UX</h4>
+                                 </div>
+                                 <div class="prompt-content">
+                                     <p>Создай современный интерактивный интерфейс для карты рисков: матрица рисков 5x5 с цветовым кодированием зон, карточки рисков с детальной информацией, фильтры по категориям и уровням риска, поиск по тексту, статистика и аналитика, экспорт в Excel с красивым форматированием, адаптивный дизайн для всех устройств, темная/светлая тема, анимации и интерактивность.</p>
+                                 </div>
+                             </div>
+                             
+                             <div class="prompt-item">
+                                 <div class="prompt-header">
+                                     <span class="prompt-number">6</span>
+                                     <h4>Экспорт данных</h4>
+                                 </div>
+                                 <div class="prompt-content">
+                                     <p>Создай функцию экспорта данных в Excel с колонками: ID, Категория риска, Название риска, Уровень риска, Вероятность, Последствия, Меры митигации. Дополнительно включи: статистику по уровням риска, группировку по категориям, цветовое кодирование, сводную таблицу, методику расчета.</p>
+                                 </div>
+                             </div>
+                             
+                             <div class="prompt-item">
+                                 <div class="prompt-header">
+                                     <span class="prompt-number">7</span>
+                                     <h4>Валидация и тестирование</h4>
+                                 </div>
+                                 <div class="prompt-content">
+                                     <p>Проверь созданную карту рисков на соответствие требованиям: полнота (все ли основные риски отрасли покрыты), актуальность (соответствуют ли риски реалиям 2025 года), структурированность (логично ли разделение по категориям), детализация (достаточно ли подробно описаны последствия и меры), практичность (можно ли использовать для реального управления рисками), экспорт (корректно ли формируется Excel-файл).</p>
+                                 </div>
+                             </div>
+                         </div>
+                     </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Модальное окно для деталей риска -->
+    <div class="modal" id="riskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="modal-close" onclick="closeModal()" title="Закрыть">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Содержимое модального окна будет добавлено через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 

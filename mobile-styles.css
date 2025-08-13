@@ -1,0 +1,318 @@
+/* ===== АДАПТИВНЫЕ СТИЛИ ===== */
+
+/* Планшеты (до 1024px) */
+@media screen and (max-width: 1024px) {
+    :root {
+        --sidebar-width: 240px;
+        --header-height: 70px;
+    }
+
+    .matrix-container {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .matrix-header h2 {
+        font-size: 2rem;
+    }
+
+    .matrix-grid {
+        gap: 0.5rem;
+    }
+
+    .matrix-cell {
+        min-height: 120px;
+        padding: 0.5rem;
+    }
+
+    .risk-card {
+        padding: 1.5rem;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+    }
+
+    .header-content h1 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Малые планшеты (до 768px) */
+@media screen and (max-width: 768px) {
+    :root {
+        --sidebar-width: 0;
+        --header-height: 60px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+        transition: transform var(--transition-normal);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .header {
+        left: 0;
+    }
+
+    .matrix-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1rem;
+    }
+
+    .risk-detail-header {
+        padding: 1rem;
+    }
+
+    .risk-detail-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .search-input {
+        font-size: 1rem;
+        padding: 1rem 1rem 1rem 3rem;
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Мобильные устройства (до 480px) */
+@media screen and (max-width: 480px) {
+    .matrix-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+
+    .risk-detail-meta {
+        flex-direction: column;
+    }
+
+    .risk-category-badge,
+    .risk-probability-badge {
+        width: 100%;
+        text-align: center;
+    }
+
+    .risk-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .risk-actions .btn {
+        width: 100%;
+    }
+
+    .pagination {
+        gap: 0.25rem;
+    }
+
+    .pagination-btn {
+        min-width: 36px;
+        height: 36px;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .search-section {
+        padding: 1rem;
+    }
+
+    .search-input {
+        padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+    }
+
+    .search-icon {
+        left: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .matrix-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .matrix-header p {
+        font-size: 0.875rem;
+    }
+
+    .risk-card {
+        padding: 1rem;
+    }
+
+    .risk-title {
+        font-size: 1.25rem;
+    }
+
+    .risk-consequences {
+        font-size: 0.875rem;
+    }
+}
+
+/* Очень маленькие экраны (до 360px) */
+@media screen and (max-width: 360px) {
+    .matrix-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-content h1 {
+        font-size: 1rem;
+    }
+
+    .header-subtitle {
+        font-size: 0.65rem;
+    }
+
+    .stat-badge {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    .risk-level-badge,
+    .risk-category-badge {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Поддержка жестов для мобильных устройств */
+@media (hover: none) and (pointer: coarse) {
+    .sidebar {
+        position: fixed;
+        touch-action: pan-x;
+    }
+
+    .matrix-cell:hover,
+    .risk-card:hover,
+    .stat-card:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+
+    .risk-level-badge:hover::before,
+    .risk-category-badge:hover::before {
+        left: -100%;
+    }
+}
+
+/* Стили для устройств с поддержкой hover */
+@media (hover: hover) {
+    .sidebar:hover {
+        box-shadow: var(--shadow-2xl), var(--shadow-glow);
+    }
+
+    .matrix-cell:hover {
+        transform: translateY(-12px) rotateX(5deg) rotateY(5deg) scale(1.03);
+    }
+
+    .risk-card:hover {
+        transform: translateY(-15px) rotateX(2deg) rotateY(2deg) scale(1.02);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-12px) scale(1.03);
+    }
+
+    .btn:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+}
+
+/* Поддержка предпочтений уменьшения движения */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .matrix-cell,
+    .risk-card,
+    .stat-card,
+    .btn,
+    .sidebar {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    .risk-level-badge::before,
+    .risk-category-badge::before {
+        display: none;
+    }
+}
+
+/* Поддержка высококонтрастного режима */
+@media (prefers-contrast: more) {
+    :root {
+        --shadow-sm: none;
+        --shadow-md: none;
+        --shadow-lg: none;
+        --shadow-xl: none;
+        --shadow-2xl: none;
+        --shadow-inner: none;
+        --shadow-glow: none;
+    }
+
+    .matrix-cell,
+    .risk-card,
+    .stat-card,
+    .sidebar,
+    .header {
+        border-width: 2px !important;
+    }
+
+    .btn,
+    .risk-level-badge,
+    .risk-category-badge {
+        border-width: 2px !important;
+        text-shadow: none !important;
+    }
+}
+
+/* Поддержка отображения в книжной/альбомной ориентации */
+@media screen and (orientation: portrait) {
+    .matrix-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .header {
+        position: absolute;
+    }
+
+    .main-content {
+        padding-top: 0;
+    }
+
+    .matrix-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .sidebar {
+        position: absolute;
+    }
+}

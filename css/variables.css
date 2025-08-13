@@ -1,0 +1,190 @@
+/* ===== ПРЕМИУМ ЦВЕТОВАЯ ПАЛИТРА 2025 - ДИЗАЙН НА 10 БАЛЛОВ ===== */
+
+:root {
+    /* Основные цвета - Electric Violet & Cosmic Teal */
+    --primary-color: #8B5FF8;
+    --primary-dark: #6C2BD9;
+    --primary-light: #A78BFA;
+    --primary-gradient: linear-gradient(135deg, #8B5FF8 0%, #00F5FF 35%, #FF6B9D 70%, #8B5FF8 100%);
+    --primary-glow: 0 0 50px rgba(139, 95, 248, 0.6), 0 0 100px rgba(139, 95, 248, 0.3);
+    
+    --secondary-color: #00F5FF;
+    --secondary-dark: #00D4E7;
+    --secondary-light: #5DFDFF;
+    --secondary-gradient: linear-gradient(135deg, #00F5FF 0%, #00C9FF 50%, #92FE9D 100%);
+    --secondary-glow: 0 0 40px rgba(0, 245, 255, 0.5), 0 0 80px rgba(0, 245, 255, 0.2);
+    
+    --accent-color: #FF6B9D;
+    --accent-dark: #E91E63;
+    --accent-light: #FFB3D1;
+    --accent-gradient: linear-gradient(135deg, #FF6B9D 0%, #C471ED 50%, #12C2E9 100%);
+    --accent-glow: 0 0 35px rgba(255, 107, 157, 0.5), 0 0 70px rgba(255, 107, 157, 0.2);
+    
+    --success-color: #00FF87;
+    --success-gradient: linear-gradient(135deg, #00FF87 0%, #60EFFF 50%, #00E676 100%);
+    --success-glow: 0 0 30px rgba(0, 255, 135, 0.4), 0 0 60px rgba(0, 255, 135, 0.2);
+    
+    --warning-color: #FFD700;
+    --warning-gradient: linear-gradient(135deg, #FFD700 0%, #FF8C00 50%, #FFA500 100%);
+    --warning-glow: 0 0 30px rgba(255, 215, 0, 0.4), 0 0 60px rgba(255, 215, 0, 0.2);
+    
+    --danger-color: #FF3366;
+    --danger-gradient: linear-gradient(135deg, #FF3366 0%, #FF1744 50%, #FF6B35 100%);
+    --danger-glow: 0 0 30px rgba(255, 51, 102, 0.5), 0 0 60px rgba(255, 51, 102, 0.2);
+    
+    --info-color: #00E5FF;
+    --info-gradient: linear-gradient(135deg, #00E5FF 0%, #00BCD4 50%, #26C6DA 100%);
+    --info-glow: 0 0 30px rgba(0, 229, 255, 0.4), 0 0 60px rgba(0, 229, 255, 0.2);
+    
+    /* Цвета рисков - Премиум неоновая палитра */
+    --critical-color: #FF0066;
+    --critical-light: #FF4081;
+    --critical-dark: #D50000;
+    --critical-gradient: linear-gradient(135deg, #FF0066 0%, #FF1744 35%, #FF6B35 70%, #FF0066 100%);
+    --critical-glow: 0 0 40px rgba(255, 0, 102, 0.7), 0 0 80px rgba(255, 0, 102, 0.3), 0 0 120px rgba(255, 0, 102, 0.1);
+    --critical-shadow: 0 12px 40px rgba(255, 0, 102, 0.3);
+    
+    --high-color: #FF6600;
+    --high-light: #FF9500;
+    --high-dark: #E65100;
+    --high-gradient: linear-gradient(135deg, #FF6600 0%, #FF8C00 35%, #FFB300 70%, #FF6600 100%);
+    --high-glow: 0 0 35px rgba(255, 102, 0, 0.6), 0 0 70px rgba(255, 102, 0, 0.2), 0 0 105px rgba(255, 102, 0, 0.1);
+    --high-shadow: 0 10px 35px rgba(255, 102, 0, 0.25);
+    
+    --medium-color: #FFCC00;
+    --medium-light: #FFD54F;
+    --medium-dark: #FF8F00;
+    --medium-gradient: linear-gradient(135deg, #FFCC00 0%, #FFB300 35%, #FFA000 70%, #FFCC00 100%);
+    --medium-glow: 0 0 30px rgba(255, 204, 0, 0.5), 0 0 60px rgba(255, 204, 0, 0.2), 0 0 90px rgba(255, 204, 0, 0.1);
+    --medium-shadow: 0 8px 30px rgba(255, 204, 0, 0.2);
+    
+    --low-color: #00FF99;
+    --low-light: #69F0AE;
+    --low-dark: #00C853;
+    --low-gradient: linear-gradient(135deg, #00FF99 0%, #00E676 35%, #1DE9B6 70%, #00FF99 100%);
+    --low-glow: 0 0 30px rgba(0, 255, 153, 0.5), 0 0 60px rgba(0, 255, 153, 0.2), 0 0 90px rgba(0, 255, 153, 0.1);
+    --low-shadow: 0 8px 30px rgba(0, 255, 153, 0.2);
+    
+    /* Нейтральные цвета - Современная темная палитра */
+    --white: #ffffff;
+    --gray-50: #fafafa;
+    --gray-100: #f5f5f5;
+    --gray-200: #e5e5e5;
+    --gray-300: #d4d4d4;
+    --gray-400: #a3a3a3;
+    --gray-500: #737373;
+    --gray-600: #525252;
+    --gray-700: #404040;
+    --gray-800: #262626;
+    --gray-900: #171717;
+    
+    /* Современные тени - Glassmorphism стиль */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-xl: 0 16px 64px rgba(0, 0, 0, 0.16), 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-2xl: 0 32px 128px rgba(0, 0, 0, 0.24), 0 16px 64px rgba(0, 0, 0, 0.16);
+    --shadow-inner: inset 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.3);
+    --shadow-colored: 0 8px 32px rgba(124, 58, 237, 0.15), 0 4px 16px rgba(124, 58, 237, 0.1);
+    --shadow-neon: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
+    
+    /* Премиум Glassmorphism эффекты - Улучшенные */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-bg-dark: rgba(0, 0, 0, 0.3);
+    --glass-border: rgba(139, 95, 248, 0.2);
+    --glass-border-dark: rgba(139, 95, 248, 0.15);
+    --blur-sm: blur(6px);
+    --blur-md: blur(12px);
+    --blur-lg: blur(20px);
+    --blur-xl: blur(30px);
+    --blur-2xl: blur(40px);
+    
+    /* Современные скругления */
+    --radius-sm: 0.75rem;
+    --radius-md: 1rem;
+    --radius-lg: 1.25rem;
+    --radius-xl: 1.5rem;
+    --radius-2xl: 2rem;
+    --radius-3xl: 2.5rem;
+    --radius-full: 9999px;
+    
+    /* Плавные анимации */
+    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-normal: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-slow: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-spring: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    
+    /* Размеры - Адаптивные */
+    --sidebar-width: 320px;
+    --sidebar-width-collapsed: 80px;
+    --header-height: 90px;
+    --container-max-width: 1600px;
+    
+    /* Градиентные фоны */
+    --bg-gradient-primary: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+    --bg-gradient-secondary: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+    --bg-gradient-accent: linear-gradient(135deg, #f472b6 0%, #a855f7 100%);
+    --bg-gradient-dark: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+    --bg-gradient-light: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    
+    /* Премиум Mesh градиенты для фона - Космические эффекты */
+    --mesh-gradient-1: radial-gradient(at 40% 20%, rgba(139, 95, 248, 0.4) 0px, transparent 60%),
+                       radial-gradient(at 80% 0%, rgba(0, 245, 255, 0.3) 0px, transparent 55%),
+                       radial-gradient(at 0% 50%, rgba(255, 107, 157, 0.35) 0px, transparent 65%),
+                       radial-gradient(at 100% 100%, rgba(0, 255, 153, 0.2) 0px, transparent 70%);
+    --mesh-gradient-2: radial-gradient(at 60% 80%, rgba(255, 0, 102, 0.3) 0px, transparent 55%),
+                       radial-gradient(at 20% 100%, rgba(0, 229, 255, 0.25) 0px, transparent 60%),
+                       radial-gradient(at 100% 30%, rgba(255, 204, 0, 0.2) 0px, transparent 65%),
+                       radial-gradient(at 0% 0%, rgba(196, 113, 237, 0.25) 0px, transparent 70%);
+}
+
+/* Темная тема - Киберпанк стиль */
+[data-theme="dark"] {
+    --white: #0a0a0a;
+    --gray-50: #111111;
+    --gray-100: #1a1a1a;
+    --gray-200: #262626;
+    --gray-300: #404040;
+    --gray-400: #525252;
+    --gray-500: #737373;
+    --gray-600: #a3a3a3;
+    --gray-700: #d4d4d4;
+    --gray-800: #e5e5e5;
+    --gray-900: #ffffff;
+    
+    /* Темные тени с неоновым свечением */
+    --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.1), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(124, 58, 237, 0.15), 0 2px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(124, 58, 237, 0.2), 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 16px 64px rgba(124, 58, 237, 0.25), 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-2xl: 0 32px 128px rgba(124, 58, 237, 0.3), 0 16px 64px rgba(0, 0, 0, 0.7);
+    --shadow-inner: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.6);
+    --shadow-colored: 0 8px 32px rgba(124, 58, 237, 0.3), 0 4px 16px rgba(124, 58, 237, 0.2);
+    --shadow-neon: 0 0 20px currentColor, 0 0 40px currentColor, 0 0 60px currentColor;
+    
+    /* Темные glassmorphism эффекты - Улучшенные */
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-bg-dark: rgba(0, 0, 0, 0.7);
+    --glass-border: rgba(139, 95, 248, 0.4);
+    --glass-border-dark: rgba(139, 95, 248, 0.25);
+    
+    /* Темные градиенты */
+    --bg-gradient-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --bg-gradient-secondary: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+    --bg-gradient-accent: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+    --bg-gradient-dark: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    --bg-gradient-light: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
+    
+    /* Темные mesh градиенты - Киберпанк эффекты */
+    --mesh-gradient-1: radial-gradient(at 40% 20%, rgba(139, 95, 248, 0.4) 0px, transparent 60%),
+                       radial-gradient(at 80% 0%, rgba(0, 245, 255, 0.3) 0px, transparent 55%),
+                       radial-gradient(at 0% 50%, rgba(255, 107, 157, 0.35) 0px, transparent 65%),
+                       radial-gradient(at 100% 100%, rgba(0, 255, 153, 0.25) 0px, transparent 70%);
+    --mesh-gradient-2: radial-gradient(at 60% 80%, rgba(255, 0, 102, 0.35) 0px, transparent 55%),
+                       radial-gradient(at 20% 100%, rgba(0, 229, 255, 0.3) 0px, transparent 60%),
+                       radial-gradient(at 100% 30%, rgba(255, 204, 0, 0.25) 0px, transparent 65%),
+                       radial-gradient(at 0% 0%, rgba(196, 113, 237, 0.3) 0px, transparent 70%);
+}
