@@ -1,0 +1,187 @@
+/* 🔝 HEADER */
+.header {
+    position: fixed;
+    top: 0;
+    left: var(--sidebar-width);
+    right: 0;
+    height: var(--header-height);
+    background: var(--glass);
+    backdrop-filter: var(--blur);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-medium);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    animation: fadeSlideIn 0.5s ease-out 0.1s both;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header-stats {
+    display: flex;
+    gap: 1rem;
+}
+
+.stat-chip {
+    background: var(--light);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid var(--light-5);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-soft);
+}
+
+.stat-chip:hover {
+    background: var(--primary);
+    color: var(--light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* 🔄 VIEW SWITCHER */
+.view-switcher {
+    display: flex;
+    background: var(--light);
+    border: 1px solid var(--light-5);
+    border-radius: var(--border-radius);
+    padding: 0.25rem;
+    margin-right: 1rem;
+    box-shadow: var(--shadow-soft);
+}
+
+.view-btn {
+    padding: 0.6rem 1rem;
+    background: transparent;
+    border: none;
+    border-radius: calc(var(--border-radius) - 2px);
+    color: var(--dark-3);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.view-btn:hover {
+    background: var(--light-3);
+    color: var(--primary);
+}
+
+.view-btn.active {
+    background: var(--primary);
+    color: var(--light);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 🎮 BUTTONS */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-large);
+}
+
+.btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--light);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-secondary {
+    background: var(--light);
+    color: var(--dark);
+    border: 1px solid var(--light-5);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-secondary:hover {
+    background: var(--secondary);
+    color: var(--light);
+    border-color: var(--secondary);
+}
+
+.btn-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+    border: 1px solid var(--light-5);
+    color: var(--primary);
+    transition: var(--transition-spring);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-icon:hover {
+    background: var(--accent);
+    color: var(--light);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-large);
+}
+
+/* 🎯 MOBILE MENU BUTTON */
+.mobile-menu-btn {
+    display: none;
+    background: var(--light);
+    border: 1px solid var(--light-5);
+    border-radius: var(--border-radius);
+    padding: 0.75rem;
+    color: var(--primary);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-soft);
+}
+
+.mobile-menu-btn:hover {
+    background: var(--primary);
+    color: var(--light);
+    transform: scale(1.05);
+}

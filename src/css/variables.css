@@ -1,0 +1,96 @@
+/* ===== MODERN USER-FRIENDLY DESIGN SYSTEM 2025 ===== */
+:root {
+    /* 🎨 СОВРЕМЕННАЯ ДРУЖЕЛЮБНАЯ ПАЛИТРА */
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --primary-dark: #2563eb;
+    --primary-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+    
+    --secondary: #10b981;
+    --secondary-light: #34d399;
+    --secondary-dark: #059669;
+    
+    --accent: #f59e0b;
+    --accent-light: #fbbf24;
+    --accent-dark: #d97706;
+    
+    --purple: #8b5cf6;
+    --purple-light: #a78bfa;
+    
+    /* 🌟 МЯГКИЕ СОВРЕМЕННЫЕ ГРАДИЕНТЫ */
+    --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --gradient-hero: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
+    --gradient-soft: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    
+    /* 🎯 ЦВЕТА РИСКОВ - ИНТУИТИВНЫЕ И ДРУЖЕЛЮБНЫЕ */
+    --critical: #ef4444;
+    --critical-bg: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    --critical-light: #fecaca;
+    --critical-glow: 0 0 15px rgba(239, 68, 68, 0.3);
+    
+    --high: #f97316;
+    --high-bg: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    --high-light: #fed7aa;
+    --high-glow: 0 0 15px rgba(249, 115, 22, 0.3);
+    
+    --medium: #eab308;
+    --medium-bg: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+    --medium-light: #fef08a;
+    --medium-glow: 0 0 15px rgba(234, 179, 8, 0.3);
+    
+    --low: #22c55e;
+    --low-bg: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    --low-light: #bbf7d0;
+    --low-glow: 0 0 15px rgba(34, 197, 94, 0.3);
+    
+    /* 🌈 СОВРЕМЕННАЯ НЕЙТРАЛЬНАЯ ПАЛИТРА */
+    --dark: #1e293b;
+    --dark-2: #334155;
+    --dark-3: #475569;
+    --dark-4: #64748b;
+    
+    --light: #ffffff;
+    --light-2: #f8fafc;
+    --light-3: #f1f5f9;
+    --light-4: #e2e8f0;
+    --light-5: #cbd5e1;
+    
+    --glass: rgba(255, 255, 255, 0.9);
+    --glass-border: rgba(148, 163, 184, 0.2);
+    --glass-dark: rgba(30, 41, 59, 0.8);
+    
+    /* 💫 МЯГКИЕ ДРУЖЕЛЮБНЫЕ ТЕНИ */
+    --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+    --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+    --blur: blur(12px);
+    --blur-heavy: blur(24px);
+    
+    /* 📐 РАЗМЕРЫ */
+    --sidebar-width: 320px;
+    --header-height: 80px;
+    --border-radius: 16px;
+    --border-radius-lg: 24px;
+    
+    /* ⚡ ПЛАВНЫЕ АНИМАЦИИ */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 🌙 ТЕМНАЯ ТЕМА - ДРУЖЕЛЮБНАЯ */
+[data-theme="dark"] {
+    --light: #0f172a;
+    --light-2: #1e293b;
+    --light-3: #334155;
+    --light-4: #475569;
+    --light-5: #64748b;
+    --dark: #f8fafc;
+    --dark-2: #f1f5f9;
+    --dark-3: #e2e8f0;
+    --dark-4: #cbd5e1;
+    --glass: rgba(30, 41, 59, 0.9);
+    --glass-border: rgba(148, 163, 184, 0.2);
+}

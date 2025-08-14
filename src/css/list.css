@@ -1,0 +1,167 @@
+/* 📋 СПИСОК РИСКОВ */
+.list-container {
+    background: var(--light);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--light-5);
+    box-shadow: var(--shadow-large);
+    animation: fadeSlideIn 0.6s ease-out;
+}
+
+.list-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.list-title {
+    font-size: 2rem;
+    font-weight: 700;
+    background: var(--gradient-hero);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.list-subtitle {
+    color: var(--dark-3);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.list-table-container {
+    overflow-x: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-medium);
+}
+
+.risk-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--light);
+    font-size: 0.9rem;
+}
+
+.risk-table th {
+    background: var(--gradient-primary);
+    color: var(--light);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    white-space: nowrap;
+}
+
+.risk-table th:hover {
+    background: var(--primary-dark);
+}
+
+.risk-table th i {
+    margin-right: 0.5rem;
+}
+
+.sort-icon {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    font-size: 0.7rem;
+}
+
+.risk-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--light-5);
+    transition: var(--transition);
+}
+
+.risk-table tr:hover {
+    background: var(--light-3);
+}
+
+.risk-table tr:last-child td {
+    border-bottom: none;
+}
+
+.table-risk-level {
+    padding: 0.3rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    min-width: 70px;
+    text-align: center;
+}
+
+.table-risk-level.critical {
+    background: var(--critical-light);
+    color: var(--critical);
+}
+
+.table-risk-level.high {
+    background: var(--high-light);
+    color: var(--high);
+}
+
+.table-risk-level.medium {
+    background: var(--medium-light);
+    color: var(--medium);
+}
+
+.table-risk-level.low {
+    background: var(--low-light);
+    color: var(--low);
+}
+
+.table-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    color: var(--dark-3);
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.action-btn {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.action-btn.primary {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.action-btn.primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+    background: var(--light-3);
+    color: var(--dark-3);
+}
+
+.action-btn.secondary:hover {
+    background: var(--secondary);
+    color: var(--light);
+}

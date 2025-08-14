@@ -1,0 +1,68 @@
+/* 🏗️ LAYOUT */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* 📱 ОСНОВНОЙ КОНТЕНТ */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding-top: var(--header-height);
+    min-height: 100vh;
+}
+
+/* 🔍 SEARCH SECTION */
+.search-section {
+    padding: 1.5rem 2rem;
+    background: var(--light);
+    border-bottom: 1px solid var(--light-5);
+    box-shadow: var(--shadow-soft);
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--light-5);
+    border-radius: var(--border-radius-lg);
+    background: var(--light);
+    color: var(--dark);
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.search-input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+    transform: scale(1.01);
+}
+
+.search-input::placeholder {
+    color: var(--dark-4);
+    font-weight: 400;
+}
+
+.search-icon {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary);
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+/* 📊 CONTENT AREA */
+.content-area {
+    padding: 2rem;
+    min-height: calc(100vh - var(--header-height) - 100px);
+}
