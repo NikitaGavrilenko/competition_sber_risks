@@ -1,165 +1,653 @@
-/* 🃏 КАРТОЧКИ РИСКОВ */
+/* 🃏 ULTRA MODERN INTERACTIVE CARDS */
+
+/* 🎯 КОНТЕЙНЕР КАРТОЧЕК */
 .cards-container {
-    background: var(--light);
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    border: 1px solid var(--light-5);
-    box-shadow: var(--shadow-large);
-    animation: fadeSlideIn 0.6s ease-out;
-}
-
-.cards-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.cards-title {
-    font-size: 2rem;
-    font-weight: 700;
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
-}
-
-.cards-subtitle {
-    color: var(--dark-3);
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.cards-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.risk-card {
-    background: var(--light);
-    border: 1px solid var(--light-5);
-    border-radius: var(--border-radius-lg);
-    padding: 1.5rem;
-    box-shadow: var(--shadow-medium);
-    transition: var(--transition-spring);
-    cursor: pointer;
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-xl);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-2xl);
     position: relative;
     overflow: hidden;
+    animation: slideUp var(--duration-slow) var(--ease-out);
 }
 
-.risk-card::before {
+.cards-container::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 4px;
-    transition: var(--transition);
+    background: var(--gradient-primary);
+    opacity: 0.8;
 }
 
-.risk-card.critical::before { background: var(--critical-bg); }
-.risk-card.high::before { background: var(--high-bg); }
-.risk-card.medium::before { background: var(--medium-bg); }
-.risk-card.low::before { background: var(--low-bg); }
+.cards-container::after {
+    content: '';
+    position: absolute;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-secondary);
+    border-radius: var(--radius-md);
+    opacity: 0.1;
+    animation: float 4s ease-in-out infinite reverse;
+}
 
+/* 📝 ЗАГОЛОВОК СЕКЦИИ */
+.cards-header {
+    text-align: center;
+    margin-bottom: var(--space-8);
+    position: relative;
+    z-index: 2;
+}
+
+.cards-title {
+    font-size: clamp(1.875rem, 4vw, 2.5rem);
+    font-weight: 800;
+    background: var(--gradient-hero);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    margin-bottom: var(--space-2);
+    line-height: 1.2;
+}
+
+.cards-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    font-weight: 500;
+    opacity: 0.8;
+    animation: slideUp var(--duration-normal) var(--ease-out) 0.1s both;
+}
+
+/* 🎯 СЕТКА КАРТОЧЕК */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: var(--space-6);
+    animation: staggeredFadeIn var(--duration-slow) var(--ease-out) 0.2s both;
+}
+
+/* 🃏 ОСНОВНАЯ КАРТОЧКА */
+.risk-card {
+    background: var(--surface-0);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-slow) var(--ease-out);
+    box-shadow: var(--shadow-lg);
+    transform-style: preserve-3d;
+    will-change: transform, box-shadow;
+}
+
+/* 🌟 АНИМИРОВАННЫЙ ГРАДИЕНТ ФОНА */
+.risk-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+    z-index: 0;
+}
+
+.risk-card::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-xl);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+    z-index: -1;
+    filter: blur(20px);
+}
+
+/* 🎭 HOVER ЭФФЕКТЫ */
 .risk-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--primary);
+    transform: translateY(-12px) scale(1.02) rotateX(2deg);
+    box-shadow: var(--shadow-float);
+    border-color: transparent;
 }
 
+.risk-card:hover::before {
+    opacity: 0.03;
+}
+
+.risk-card:hover::after {
+    opacity: 0.2;
+}
+
+/* 🔥 АКТИВНОЕ СОСТОЯНИЕ */
+.risk-card:active {
+    transform: translateY(-8px) scale(1.01);
+    transition-duration: var(--duration-fast);
+}
+
+/* 🎨 ЦВЕТОВЫЕ ВАРИАНТЫ КАРТОЧЕК */
+.risk-card.critical {
+    border-color: var(--critical-200);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--critical-50) 100%);
+}
+
+.risk-card.critical::before {
+    background: var(--critical-gradient);
+}
+
+.risk-card.critical::after {
+    background: var(--critical-gradient);
+}
+
+.risk-card.critical:hover {
+    box-shadow: var(--critical-shadow);
+    transform: translateY(-15px) scale(1.03) rotateX(3deg);
+}
+
+.risk-card.high {
+    border-color: var(--high-200);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--high-50) 100%);
+}
+
+.risk-card.high::before {
+    background: var(--high-gradient);
+}
+
+.risk-card.high::after {
+    background: var(--high-gradient);
+}
+
+.risk-card.high:hover {
+    box-shadow: var(--high-shadow);
+    transform: translateY(-12px) scale(1.02) rotateX(2deg);
+}
+
+.risk-card.medium {
+    border-color: var(--medium-200);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--medium-50) 100%);
+}
+
+.risk-card.medium::before {
+    background: var(--medium-gradient);
+}
+
+.risk-card.medium::after {
+    background: var(--medium-gradient);
+}
+
+.risk-card.medium:hover {
+    box-shadow: var(--medium-shadow);
+    transform: translateY(-10px) scale(1.02) rotateX(2deg);
+}
+
+.risk-card.low {
+    border-color: var(--low-200);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--low-50) 100%);
+}
+
+.risk-card.low::before {
+    background: var(--low-gradient);
+}
+
+.risk-card.low::after {
+    background: var(--low-gradient);
+}
+
+.risk-card.low:hover {
+    box-shadow: var(--low-shadow);
+    transform: translateY(-8px) scale(1.01) rotateX(1deg);
+}
+
+/* 📋 ЗАГОЛОВОК КАРТОЧКИ */
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-5);
+    position: relative;
+    z-index: 2;
+    gap: var(--space-4);
 }
 
 .card-title {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--dark);
-    margin: 0;
+    color: var(--text-primary);
     line-height: 1.3;
     flex: 1;
-    margin-right: 1rem;
+    margin: 0;
+    transition: color var(--duration-normal) var(--ease-out);
 }
 
+.risk-card:hover .card-title {
+    color: var(--primary-700);
+}
+
+/* 🏷️ БЕЙДЖ УРОВНЯ РИСКА */
 .risk-level-badge {
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
     font-size: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
     flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-out);
+    box-shadow: var(--shadow-sm);
+}
+
+.risk-level-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left var(--duration-slow) var(--ease-out);
+}
+
+.risk-card:hover .risk-level-badge::before {
+    left: 100%;
 }
 
 .risk-level-badge.critical {
-    background: var(--critical-light);
-    color: var(--critical);
+    background: var(--critical-gradient);
+    color: white;
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .risk-level-badge.high {
-    background: var(--high-light);
-    color: var(--high);
+    background: var(--high-gradient);
+    color: white;
 }
 
 .risk-level-badge.medium {
-    background: var(--medium-light);
-    color: var(--medium);
+    background: var(--medium-gradient);
+    color: white;
 }
 
 .risk-level-badge.low {
-    background: var(--low-light);
-    color: var(--low);
+    background: var(--low-gradient);
+    color: white;
 }
 
+/* 🏢 КАТЕГОРИЯ КАРТОЧКИ */
 .card-category {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: var(--light-3);
-    color: var(--dark-3);
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+    gap: var(--space-3);
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-lg);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+    z-index: 2;
+    border: 1px solid var(--border-color);
 }
 
+.card-category i {
+    font-size: 1rem;
+    color: var(--primary-500);
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.risk-card:hover .card-category {
+    background: var(--primary-50);
+    color: var(--primary-700);
+    border-color: var(--primary-200);
+    transform: translateY(-2px);
+}
+
+.risk-card:hover .card-category i {
+    color: var(--primary-600);
+    transform: scale(1.1);
+}
+
+/* 📝 ОПИСАНИЕ КАРТОЧКИ */
 .card-description {
-    color: var(--dark-3);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-5);
+    position: relative;
+    z-index: 2;
+    transition: color var(--duration-normal) var(--ease-out);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
+.risk-card:hover .card-description {
+    color: var(--text-primary);
+}
+
+/* 📊 МЕТРИКИ КАРТОЧКИ */
 .card-metrics {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
+    position: relative;
+    z-index: 2;
 }
 
 .metric {
     text-align: center;
-    padding: 0.75rem;
-    background: var(--light-3);
-    border-radius: var(--border-radius);
+    padding: var(--space-4);
+    background: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.risk-card:hover .metric {
+    background: var(--surface-0);
+    border-color: var(--primary-200);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.risk-card:hover .metric::before {
+    transform: scaleX(1);
 }
 
 .metric-label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: var(--dark-4);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-quaternary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 0.25rem;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-1);
+    transition: color var(--duration-normal) var(--ease-out);
 }
 
 .metric-value {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--text-primary);
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.risk-card:hover .metric-label {
+    color: var(--primary-600);
+}
+
+.risk-card:hover .metric-value {
+    color: var(--primary-700);
+    transform: scale(1.05);
+}
+
+/* 🎯 СПЕЦИАЛЬНЫЕ ЭФФЕКТЫ */
+.risk-card.featured {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    position: relative;
+}
+
+.risk-card.featured::before {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+    opacity: 1;
+}
+
+.risk-card.featured .card-title,
+.risk-card.featured .card-description,
+.risk-card.featured .metric-value {
+    color: white;
+}
+
+.risk-card.featured .card-category {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border-color: rgba(255,255,255,0.2);
+}
+
+.risk-card.featured .metric {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.risk-card.featured .metric-label {
+    color: rgba(255,255,255,0.8);
+}
+
+/* 🎪 LOADING СОСТОЯНИЕ */
+.risk-card.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.risk-card.loading::before {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shimmer 1.5s infinite;
+    opacity: 1;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* 🎭 EMPTY STATE */
+.cards-empty {
+    text-align: center;
+    padding: var(--space-16) var(--space-8);
+    color: var(--text-tertiary);
+}
+
+.cards-empty-icon {
+    font-size: 4rem;
+    color: var(--text-quaternary);
+    margin-bottom: var(--space-4);
+    opacity: 0.5;
+}
+
+.cards-empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.cards-empty-description {
+    font-size: 1rem;
+    color: var(--text-tertiary);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--space-5);
+    }
+    
+    .risk-card {
+        padding: var(--space-5);
+    }
+    
+    .card-header {
+        gap: var(--space-3);
+    }
+    
+    .cards-title {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        padding: var(--space-6);
+    }
+    
+    .cards-header {
+        margin-bottom: var(--space-6);
+    }
+    
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+    }
+    
+    .risk-card {
+        padding: var(--space-4);
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-3);
+    }
+    
+    .risk-level-badge {
+        align-self: flex-end;
+    }
+    
+    .card-metrics {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+    
+    .metric {
+        padding: var(--space-3);
+    }
+    
+    /* Упрощенные hover эффекты для мобильных */
+    .risk-card:hover {
+        transform: translateY(-4px);
+    }
+    
+    .risk-card.critical:hover,
+    .risk-card.high:hover,
+    .risk-card.medium:hover,
+    .risk-card.low:hover {
+        transform: translateY(-4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .cards-container {
+        padding: var(--space-4);
+        border-radius: var(--radius-lg);
+    }
+    
+    .risk-card {
+        padding: var(--space-3);
+        border-radius: var(--radius-lg);
+    }
+    
+    .card-title {
+        font-size: 1.125rem;
+    }
+    
+    .card-description {
+        font-size: 0.875rem;
+        -webkit-line-clamp: 2;
+    }
+    
+    .metric {
+        padding: var(--space-3);
+    }
+    
+    .metric-value {
+        font-size: 0.9375rem;
+    }
+    
+    .risk-level-badge {
+        padding: var(--space-1) var(--space-3);
+        font-size: 0.6875rem;
+    }
+}
+
+/* 🌙 ТЕМНАЯ ТЕМА АДАПТАЦИИ */
+[data-theme="dark"] .risk-card {
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .risk-card:hover {
+    background: var(--surface-1);
+    border-color: var(--primary-400);
+}
+
+[data-theme="dark"] .card-category {
+    background: var(--surface-3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .risk-card:hover .card-category {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-400);
+}
+
+[data-theme="dark"] .metric {
+    background: var(--surface-3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .risk-card:hover .metric {
+    background: var(--surface-2);
+    border-color: var(--primary-400);
+}
+
+[data-theme="dark"] .risk-card.critical {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(239, 68, 68, 0.05) 100%);
+}
+
+[data-theme="dark"] .risk-card.high {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(249, 115, 22, 0.05) 100%);
+}
+
+[data-theme="dark"] .risk-card.medium {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(234, 179, 8, 0.05) 100%);
+}
+
+[data-theme="dark"] .risk-card.low {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(34, 197, 94, 0.05) 100%);
+}
+
+/* 🚀 ПРОИЗВОДИТЕЛЬНОСТЬ */
+.cards-grid > .risk-card {
+    will-change: transform, box-shadow;
+}
+
+.risk-card.gpu-optimized {
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }

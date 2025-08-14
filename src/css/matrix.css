@@ -1,138 +1,223 @@
-/* 🎯 MATRIX CONTAINER */
+/* 📊 ULTRA MODERN 3D RISK MATRIX */
+
+/* 🎯 КОНТЕЙНЕР МАТРИЦЫ */
 .matrix-container {
-    background: var(--light);
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    border: 1px solid var(--light-5);
-    box-shadow: var(--shadow-large);
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-xl);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-2xl);
     position: relative;
-    animation: fadeSlideIn 0.6s ease-out 0.2s both;
+    overflow: hidden;
+    animation: scaleIn var(--duration-slow) var(--ease-out);
 }
 
+.matrix-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    opacity: 0.8;
+}
+
+.matrix-container::after {
+    content: '';
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* 📝 ЗАГОЛОВОК МАТРИЦЫ */
 .matrix-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-10);
+    position: relative;
+    z-index: 2;
 }
 
 .matrix-title {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: clamp(1.875rem, 4vw, 2.5rem);
+    font-weight: 800;
     background: var(--gradient-hero);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    margin-bottom: var(--space-2);
+    line-height: 1.2;
 }
 
 .matrix-subtitle {
-    color: var(--dark-3);
-    font-size: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
     font-weight: 500;
+    opacity: 0.8;
+    animation: slideUp var(--duration-normal) var(--ease-out) 0.1s both;
 }
 
-/* 🔥 MATRIX GRID */
+/* 🎯 ОСНОВНАЯ СЕТКА МАТРИЦЫ */
 .matrix-grid {
     display: grid;
     grid-template-columns: auto repeat(5, 1fr);
-    gap: 10px;
-    max-width: 900px;
+    gap: var(--space-4);
+    max-width: 1000px;
     margin: 0 auto;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+    animation: fadeIn var(--duration-slow) var(--ease-out) 0.3s both;
 }
 
-/* Улучшаем отображение матрицы */
-.matrix-grid > * {
-    display: contents;
-}
-
-/* Альтернативный способ для браузеров, которые не поддерживают display: contents */
-@supports not (display: contents) {
-    .matrix-grid {
-        display: table;
-        border-collapse: collapse;
-        width: 100%;
-    }
-    
-    .matrix-row {
-        display: table-row;
-    }
-    
-    .matrix-label,
-    .matrix-cell {
-        display: table-cell;
-        vertical-align: middle;
-        padding: 1rem;
-        text-align: center;
-    }
-}
-
-.matrix-row {
-    display: contents;
-}
-
-.matrix-row.header-row {
-    display: contents;
-}
-
+/* 🏷️ ЛЕЙБЛЫ ОСЕЙ */
 .matrix-label {
-    background: var(--light-3);
-    border: 1px solid var(--light-5);
-    border-radius: var(--border-radius);
-    padding: 1rem;
+    background: var(--surface-0);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 600;
-    font-size: 0.85rem;
-    color: var(--dark-2);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--text-primary);
     text-align: center;
-    box-shadow: var(--shadow-soft);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-out);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--surface-1) 100%);
+}
+
+.matrix-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+    transition: left var(--duration-slow) var(--ease-out);
+}
+
+.matrix-label:hover::before {
+    left: 100%;
 }
 
 .matrix-label.empty {
     background: transparent;
     border: none;
     box-shadow: none;
+    padding: var(--space-2);
 }
 
+.matrix-label:not(.empty):hover {
+    transform: translateY(-2px) scale(1.02);
+    border-color: var(--primary-300);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Стили для значений и подписей в лейблах */
+.matrix-label .label-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: var(--space-1);
+}
+
+.matrix-label .label-text {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+/* 🎲 ЯЧЕЙКИ МАТРИЦЫ */
 .matrix-cell {
     aspect-ratio: 1;
-    background: var(--light);
-    border: 2px solid var(--light-5);
-    border-radius: var(--border-radius);
+    background: var(--surface-0);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     cursor: pointer;
-    transition: var(--transition-spring);
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--dark);
-    box-shadow: var(--shadow-soft);
-    overflow: visible;
-    gap: 0.25rem;
-    padding: 0.5rem;
+    transition: all var(--duration-slow) var(--ease-bounce);
+    transform-style: preserve-3d;
+    overflow: hidden;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: var(--blur-sm);
 }
 
+/* 🌟 3D HOVER ЭФФЕКТЫ */
+.matrix-cell:hover {
+    transform: translateY(-8px) scale(1.05) rotateX(5deg) rotateY(5deg);
+    box-shadow: var(--shadow-float);
+    z-index: 10;
+    border-color: var(--primary-400);
+}
+
+.matrix-cell:active {
+    transform: translateY(-4px) scale(1.02) rotateX(2deg) rotateY(2deg);
+    transition-duration: var(--duration-fast);
+}
+
+/* 📊 СОДЕРЖИМОЕ ЯЧЕЕК */
 .matrix-cell .risk-count {
-    font-size: 1.5rem;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: 900;
     line-height: 1;
-    color: var(--dark);
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    color: var(--text-primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+    z-index: 2;
 }
 
 .matrix-cell .risk-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    opacity: 0.95;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
     text-align: center;
-    line-height: 1.1;
-    color: var(--dark);
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    line-height: 1.2;
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
+.matrix-cell:hover .risk-count {
+    transform: scale(1.1);
+    color: white;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.matrix-cell:hover .risk-label {
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(2px);
+}
+
+/* 🎨 ЦВЕТОВЫЕ ГРАДИЕНТЫ ДЛЯ УРОВНЕЙ РИСКА */
 .matrix-cell::before {
     content: '';
     position: absolute;
@@ -140,188 +225,486 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border-radius: calc(var(--border-radius) - 2px);
-    transition: var(--transition);
+    border-radius: calc(var(--radius-lg) - 2px);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+    z-index: 1;
 }
 
-.matrix-cell:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: var(--shadow-xl);
-    z-index: 10;
-}
-
-.matrix-cell:hover::after {
-    content: attr(title);
+.matrix-cell::after {
+    content: '';
     position: absolute;
-    bottom: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--dark);
-    color: var(--light);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    font-size: 0.8rem;
-    white-space: nowrap;
-    z-index: 1000;
-    box-shadow: var(--shadow-large);
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: var(--radius-lg);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+    z-index: 0;
+    filter: blur(12px);
 }
 
-/* Стили для пустых ячеек */
+/* КРИТИЧЕСКИЙ УРОВЕНЬ */
+.matrix-cell.critical {
+    border-color: var(--critical-300);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--critical-50) 100%);
+}
+
+.matrix-cell.critical::before {
+    background: var(--critical-gradient);
+}
+
+.matrix-cell.critical::after {
+    background: var(--critical-gradient);
+}
+
+.matrix-cell.critical:hover {
+    box-shadow: var(--critical-shadow);
+    border-color: var(--critical-400);
+}
+
+.matrix-cell.critical:hover::before {
+    opacity: 0.9;
+}
+
+.matrix-cell.critical:hover::after {
+    opacity: 0.4;
+}
+
+/* Пульсация для критических ячеек */
+.matrix-cell.critical.has-risks {
+    animation: criticalPulse 2s ease-in-out infinite;
+}
+
+@keyframes criticalPulse {
+    0%, 100% {
+        box-shadow: var(--shadow-md), 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+    50% {
+        box-shadow: var(--shadow-lg), 0 0 0 8px rgba(239, 68, 68, 0);
+    }
+}
+
+/* ВЫСОКИЙ УРОВЕНЬ */
+.matrix-cell.high {
+    border-color: var(--high-300);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--high-50) 100%);
+}
+
+.matrix-cell.high::before {
+    background: var(--high-gradient);
+}
+
+.matrix-cell.high::after {
+    background: var(--high-gradient);
+}
+
+.matrix-cell.high:hover {
+    box-shadow: var(--high-shadow);
+    border-color: var(--high-400);
+}
+
+.matrix-cell.high:hover::before {
+    opacity: 0.8;
+}
+
+.matrix-cell.high:hover::after {
+    opacity: 0.3;
+}
+
+/* СРЕДНИЙ УРОВЕНЬ */
+.matrix-cell.medium {
+    border-color: var(--medium-300);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--medium-50) 100%);
+}
+
+.matrix-cell.medium::before {
+    background: var(--medium-gradient);
+}
+
+.matrix-cell.medium::after {
+    background: var(--medium-gradient);
+}
+
+.matrix-cell.medium:hover {
+    box-shadow: var(--medium-shadow);
+    border-color: var(--medium-400);
+}
+
+.matrix-cell.medium:hover::before {
+    opacity: 0.7;
+}
+
+.matrix-cell.medium:hover::after {
+    opacity: 0.25;
+}
+
+/* НИЗКИЙ УРОВЕНЬ */
+.matrix-cell.low {
+    border-color: var(--low-300);
+    background: linear-gradient(135deg, var(--surface-0) 0%, var(--low-50) 100%);
+}
+
+.matrix-cell.low::before {
+    background: var(--low-gradient);
+}
+
+.matrix-cell.low::after {
+    background: var(--low-gradient);
+}
+
+.matrix-cell.low:hover {
+    box-shadow: var(--low-shadow);
+    border-color: var(--low-400);
+}
+
+.matrix-cell.low:hover::before {
+    opacity: 0.6;
+}
+
+.matrix-cell.low:hover::after {
+    opacity: 0.2;
+}
+
+/* 📭 ПУСТЫЕ ЯЧЕЙКИ */
 .matrix-cell.empty-cell {
-    background: var(--light-2);
-    border: 2px dashed var(--light-4);
-    color: var(--dark-2);
+    background: var(--surface-2);
+    border: 2px dashed var(--border-color);
+    color: var(--text-tertiary);
     cursor: default;
+    opacity: 0.6;
 }
 
 .matrix-cell.empty-cell:hover {
-    transform: none;
-    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px) scale(1.01);
+    opacity: 0.8;
+    border-color: var(--border-color-hover);
 }
 
 .matrix-cell.empty-cell .risk-count {
-    font-size: 1rem;
-    opacity: 0.9;
-    color: var(--dark-3);
+    font-size: 1.5rem;
+    color: var(--text-quaternary);
 }
 
 .matrix-cell.empty-cell .risk-label {
-    opacity: 0.9;
-    color: var(--dark-3);
+    color: var(--text-quaternary);
 }
 
-/* 🌈 ЦВЕТА МАТРИЦЫ */
-.matrix-cell.critical::before { 
-    background: var(--critical-bg); 
-    opacity: 0.9;
-}
-.matrix-cell.high::before { 
-    background: var(--high-bg); 
-    opacity: 0.9;
-}
-.matrix-cell.medium::before { 
-    background: var(--medium-bg); 
-    opacity: 0.9;
-}
-.matrix-cell.low::before { 
-    background: var(--low-bg); 
-    opacity: 0.9;
-}
-
-.matrix-cell.critical { 
-    border-color: var(--critical); 
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
-}
-.matrix-cell.high { 
-    border-color: var(--high); 
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
-}
-.matrix-cell.medium { 
-    border-color: var(--medium); 
-    box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2);
-}
-.matrix-cell.low { 
-    border-color: var(--low); 
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
-}
-
-/* Дополнительные стили для ячеек с разным количеством рисков */
+/* 🔢 МНОЖЕСТВЕННЫЕ РИСКИ */
 .matrix-cell.multiple-risks {
     position: relative;
 }
 
 .matrix-cell.multiple-risks::before {
-    content: '';
+    content: attr(data-count);
     position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 20px;
-    height: 20px;
-    background: var(--accent);
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    background: var(--gradient-accent);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--white);
-    box-shadow: var(--shadow-medium);
-    z-index: 5;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: white;
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+    animation: bounceIn var(--duration-normal) var(--ease-bounce);
 }
 
-.matrix-cell.multiple-risks::before {
-    content: attr(data-count);
-}
-
-/* 📊 РИСКИ В ЯЧЕЙКЕ МАТРИЦЫ */
-.risks-in-cell {
-    padding: 1rem 0;
-}
-
-.risks-in-cell p {
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-    color: var(--dark-2);
-}
-
-.risks-list {
+/* 🎯 ЛЕГЕНДА МАТРИЦЫ */
+.matrix-legend {
+    grid-column: 1 / -1;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+    padding: var(--space-6);
+    background: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    animation: slideUp var(--duration-slow) var(--ease-out) 0.5s both;
 }
 
-.risk-item {
-    background: var(--light-2);
-    border: 1px solid var(--light-4);
-    border-radius: var(--border-radius);
-    padding: 1rem;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.risk-item:hover {
-    background: var(--light-3);
-    transform: translateX(5px);
-}
-
-.risk-item.critical {
-    border-left: 4px solid var(--critical);
-}
-
-.risk-item.high {
-    border-left: 4px solid var(--high);
-}
-
-.risk-item.medium {
-    border-left: 4px solid var(--medium);
-}
-
-.risk-item.low {
-    border-left: 4px solid var(--low);
-}
-
-.risk-item-header {
+.legend-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.risk-item-header h4 {
-    margin: 0;
-    font-size: 1rem;
+    gap: var(--space-3);
+    font-size: 0.875rem;
     font-weight: 600;
-    color: var(--dark-1);
+    color: var(--text-secondary);
+    padding: var(--space-3) var(--space-4);
+    background: var(--surface-0);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    transition: all var(--duration-normal) var(--ease-out);
+    cursor: pointer;
 }
 
-.risk-item p {
-    margin: 0.5rem 0;
-    color: var(--dark-3);
-    font-size: 0.9rem;
-    line-height: 1.4;
+.legend-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-300);
 }
 
-.risk-item small {
-    color: var(--dark-4);
-    font-size: 0.8rem;
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: var(--radius-sm);
+    border: 2px solid white;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.legend-item:hover .legend-color {
+    transform: scale(1.2);
+    box-shadow: var(--shadow-md);
+}
+
+.legend-item.critical .legend-color { background: var(--critical-gradient); }
+.legend-item.high .legend-color { background: var(--high-gradient); }
+.legend-item.medium .legend-color { background: var(--medium-gradient); }
+.legend-item.low .legend-color { background: var(--low-gradient); }
+
+/* 🎪 АНИМАЦИИ ПОЯВЛЕНИЯ */
+.matrix-grid > * {
+    animation: staggeredFadeIn var(--duration-normal) var(--ease-out) both;
+}
+
+.matrix-grid > *:nth-child(1) { animation-delay: 0ms; }
+.matrix-grid > *:nth-child(2) { animation-delay: 50ms; }
+.matrix-grid > *:nth-child(3) { animation-delay: 100ms; }
+.matrix-grid > *:nth-child(4) { animation-delay: 150ms; }
+.matrix-grid > *:nth-child(5) { animation-delay: 200ms; }
+.matrix-grid > *:nth-child(6) { animation-delay: 250ms; }
+.matrix-grid > *:nth-child(7) { animation-delay: 50ms; }
+.matrix-grid > *:nth-child(8) { animation-delay: 100ms; }
+.matrix-grid > *:nth-child(9) { animation-delay: 150ms; }
+.matrix-grid > *:nth-child(10) { animation-delay: 200ms; }
+.matrix-grid > *:nth-child(11) { animation-delay: 250ms; }
+.matrix-grid > *:nth-child(12) { animation-delay: 300ms; }
+
+/* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ */
+@media (max-width: 1024px) {
+    .matrix-grid {
+        grid-template-columns: auto repeat(4, 1fr);
+        gap: var(--space-3);
+        max-width: 800px;
+    }
+    
+    .matrix-cell {
+        padding: var(--space-2);
+    }
+    
+    .matrix-cell .risk-count {
+        font-size: 1.5rem;
+    }
+    
+    .matrix-cell .risk-label {
+        font-size: 0.6875rem;
+    }
+    
+    .matrix-label {
+        padding: var(--space-3);
+        font-size: 0.875rem;
+    }
+    
+    .matrix-label .label-value {
+        font-size: 1.25rem;
+    }
+    
+    .matrix-legend {
+        gap: var(--space-4);
+        padding: var(--space-4);
+    }
+}
+
+@media (max-width: 768px) {
+    .matrix-container {
+        padding: var(--space-6);
+    }
+    
+    .matrix-header {
+        margin-bottom: var(--space-6);
+    }
+    
+    .matrix-grid {
+        grid-template-columns: auto repeat(3, 1fr);
+        gap: var(--space-2);
+        max-width: 600px;
+    }
+    
+    .matrix-cell {
+        padding: var(--space-1);
+        border-radius: var(--radius-md);
+    }
+    
+    .matrix-cell .risk-count {
+        font-size: 1.25rem;
+    }
+    
+    .matrix-cell .risk-label {
+        font-size: 0.625rem;
+    }
+    
+    .matrix-label {
+        padding: var(--space-2);
+        font-size: 0.75rem;
+        border-radius: var(--radius-md);
+    }
+    
+    .matrix-label .label-value {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+    
+    .matrix-label .label-text {
+        font-size: 0.625rem;
+    }
+    
+    .matrix-legend {
+        flex-direction: column;
+        gap: var(--space-3);
+        padding: var(--space-4);
+    }
+    
+    .legend-item {
+        justify-content: center;
+        padding: var(--space-2) var(--space-3);
+    }
+    
+    /* Упрощенные эффекты для мобильных */
+    .matrix-cell:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+    
+    .matrix-cell.critical:hover,
+    .matrix-cell.high:hover,
+    .matrix-cell.medium:hover,
+    .matrix-cell.low:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+}
+
+@media (max-width: 480px) {
+    .matrix-container {
+        padding: var(--space-4);
+        border-radius: var(--radius-lg);
+    }
+    
+    .matrix-grid {
+        grid-template-columns: auto repeat(2, 1fr);
+        gap: var(--space-1);
+        max-width: 400px;
+    }
+    
+    .matrix-cell {
+        padding: var(--space-1);
+        border-width: 1px;
+    }
+    
+    .matrix-cell .risk-count {
+        font-size: 1rem;
+    }
+    
+    .matrix-cell .risk-label {
+        font-size: 0.5rem;
+        line-height: 1;
+    }
+    
+    .matrix-label {
+        padding: var(--space-1);
+        font-size: 0.6875rem;
+    }
+    
+    .matrix-label .label-value {
+        font-size: 0.875rem;
+    }
+    
+    .matrix-label .label-text {
+        font-size: 0.5rem;
+    }
+    
+    .matrix-legend {
+        padding: var(--space-3);
+    }
+    
+    .legend-item {
+        font-size: 0.75rem;
+        padding: var(--space-2);
+    }
+    
+    .legend-color {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+/* 🌙 ТЕМНАЯ ТЕМА АДАПТАЦИИ */
+[data-theme="dark"] .matrix-label {
+    background: linear-gradient(135deg, var(--surface-2) 0%, var(--surface-3) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .matrix-label:hover {
+    border-color: var(--primary-400);
+}
+
+[data-theme="dark"] .matrix-cell {
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .matrix-cell:hover {
+    border-color: var(--primary-400);
+}
+
+[data-theme="dark"] .matrix-cell.empty-cell {
+    background: var(--surface-3);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .matrix-legend {
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .legend-item {
+    background: var(--surface-3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .legend-item:hover {
+    border-color: var(--primary-400);
+}
+
+[data-theme="dark"] .matrix-cell.critical {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(239, 68, 68, 0.1) 100%);
+}
+
+[data-theme="dark"] .matrix-cell.high {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(249, 115, 22, 0.1) 100%);
+}
+
+[data-theme="dark"] .matrix-cell.medium {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(234, 179, 8, 0.1) 100%);
+}
+
+[data-theme="dark"] .matrix-cell.low {
+    background: linear-gradient(135deg, var(--surface-2) 0%, rgba(34, 197, 94, 0.1) 100%);
+}
+
+/* 🚀 ПРОИЗВОДИТЕЛЬНОСТЬ */
+.matrix-grid > * {
+    will-change: transform, box-shadow;
+}
+
+.matrix-cell.gpu-optimized {
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }

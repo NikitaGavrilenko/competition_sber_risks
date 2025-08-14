@@ -1,167 +1,667 @@
-/* 📋 СПИСОК РИСКОВ */
+/* 📋 ULTRA MODERN TABLE LIST VIEW */
+
+/* 🎯 КОНТЕЙНЕР СПИСКА */
 .list-container {
-    background: var(--light);
-    border-radius: var(--border-radius-lg);
-    padding: 2rem;
-    border: 1px solid var(--light-5);
-    box-shadow: var(--shadow-large);
-    animation: fadeSlideIn 0.6s ease-out;
+    background: var(--surface-glass);
+    backdrop-filter: var(--blur-xl);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-2xl);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn var(--duration-slow) var(--ease-out);
 }
 
+.list-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    opacity: 0.8;
+}
+
+.list-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: var(--space-4);
+    width: 80px;
+    height: 2px;
+    background: var(--gradient-accent);
+    opacity: 0.2;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* 📝 ЗАГОЛОВОК СПИСКА */
 .list-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-8);
+    position: relative;
+    z-index: 2;
 }
 
 .list-title {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: clamp(1.875rem, 4vw, 2.5rem);
+    font-weight: 800;
     background: var(--gradient-hero);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 0.5rem;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease infinite;
+    margin-bottom: var(--space-2);
+    line-height: 1.2;
 }
 
 .list-subtitle {
-    color: var(--dark-3);
-    font-size: 1rem;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
     font-weight: 500;
+    opacity: 0.8;
+    animation: slideUp var(--duration-normal) var(--ease-out) 0.1s both;
 }
 
+/* 📊 КОНТЕЙНЕР ТАБЛИЦЫ */
 .list-table-container {
     overflow-x: auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-medium);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    background: var(--surface-0);
+    border: 1px solid var(--border-color);
+    animation: scaleIn var(--duration-slow) var(--ease-out) 0.2s both;
 }
 
+/* Кастомный скроллбар для таблицы */
+.list-table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.list-table-container::-webkit-scrollbar-track {
+    background: var(--surface-2);
+    border-radius: var(--radius-full);
+}
+
+.list-table-container::-webkit-scrollbar-thumb {
+    background: var(--primary-300);
+    border-radius: var(--radius-full);
+    transition: background var(--duration-fast) var(--ease-out);
+}
+
+.list-table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-500);
+}
+
+/* 📋 ОСНОВНАЯ ТАБЛИЦА */
 .risk-table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--light);
-    font-size: 0.9rem;
+    background: var(--surface-0);
+    font-size: 0.9375rem;
+    position: relative;
 }
 
+/* 🔝 ЗАГОЛОВКИ ТАБЛИЦЫ */
 .risk-table th {
     background: var(--gradient-primary);
-    color: var(--light);
-    padding: 1rem;
+    color: white;
+    padding: var(--space-5) var(--space-4);
     text-align: left;
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-weight: 700;
+    font-size: 0.8125rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all var(--duration-normal) var(--ease-out);
     position: relative;
     white-space: nowrap;
+    border: none;
+}
+
+.risk-table th:first-child {
+    border-radius: var(--radius-xl) 0 0 0;
+}
+
+.risk-table th:last-child {
+    border-radius: 0 var(--radius-xl) 0 0;
+}
+
+.risk-table th::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
 }
 
 .risk-table th:hover {
-    background: var(--primary-dark);
+    background: var(--gradient-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.risk-table th:hover::before {
+    opacity: 1;
 }
 
 .risk-table th i {
-    margin-right: 0.5rem;
+    margin-right: var(--space-2);
+    font-size: 1rem;
+    transition: transform var(--duration-normal) var(--ease-out);
 }
 
+.risk-table th:hover i {
+    transform: scale(1.1);
+}
+
+/* 🔀 ИКОНКИ СОРТИРОВКИ */
 .sort-icon {
     position: absolute;
-    right: 0.5rem;
+    right: var(--space-3);
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.6;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
+    transition: all var(--duration-normal) var(--ease-out);
 }
 
+.risk-table th:hover .sort-icon {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* 📄 ЯЧЕЙКИ ТАБЛИЦЫ */
 .risk-table td {
-    padding: 1rem;
-    border-bottom: 1px solid var(--light-5);
-    transition: var(--transition);
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--border-color);
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+}
+
+.risk-table tr {
+    transition: all var(--duration-normal) var(--ease-out);
+    cursor: pointer;
+    position: relative;
+}
+
+.risk-table tr::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
 }
 
 .risk-table tr:hover {
-    background: var(--light-3);
+    background: var(--surface-1);
+    transform: scale(1.01);
+    box-shadow: var(--shadow-md);
+}
+
+.risk-table tr:hover::before {
+    opacity: 1;
 }
 
 .risk-table tr:last-child td {
     border-bottom: none;
 }
 
+.risk-table tr:last-child:hover td:first-child {
+    border-radius: 0 0 0 var(--radius-xl);
+}
+
+.risk-table tr:last-child:hover td:last-child {
+    border-radius: 0 0 var(--radius-xl) 0;
+}
+
+/* 🏷️ УРОВЕНЬ РИСКА В ТАБЛИЦЕ */
 .table-risk-level {
-    padding: 0.3rem 0.6rem;
-    border-radius: 12px;
-    font-size: 0.7rem;
-    font-weight: 600;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: inline-block;
-    min-width: 70px;
-    text-align: center;
+    letter-spacing: 0.05em;
+    display: inline-flex;
+    align-items: center;
+    min-width: 80px;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-out);
+    box-shadow: var(--shadow-sm);
+}
+
+.table-risk-level::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left var(--duration-slow) var(--ease-out);
+}
+
+.risk-table tr:hover .table-risk-level::before {
+    left: 100%;
 }
 
 .table-risk-level.critical {
-    background: var(--critical-light);
-    color: var(--critical);
+    background: var(--critical-gradient);
+    color: white;
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .table-risk-level.high {
-    background: var(--high-light);
-    color: var(--high);
+    background: var(--high-gradient);
+    color: white;
 }
 
 .table-risk-level.medium {
-    background: var(--medium-light);
-    color: var(--medium);
+    background: var(--medium-gradient);
+    color: white;
 }
 
 .table-risk-level.low {
-    background: var(--low-light);
-    color: var(--low);
+    background: var(--low-gradient);
+    color: white;
 }
 
+/* 🏢 КАТЕГОРИЯ В ТАБЛИЦЕ */
 .table-category {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    font-size: 0.8rem;
-    color: var(--dark-3);
+    gap: var(--space-2);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: var(--space-2) var(--space-3);
+    background: var(--surface-2);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    transition: all var(--duration-normal) var(--ease-out);
 }
 
+.table-category i {
+    font-size: 1rem;
+    color: var(--primary-500);
+    transition: all var(--duration-normal) var(--ease-out);
+}
+
+.risk-table tr:hover .table-category {
+    background: var(--primary-50);
+    color: var(--primary-700);
+    border-color: var(--primary-200);
+    transform: scale(1.02);
+}
+
+.risk-table tr:hover .table-category i {
+    color: var(--primary-600);
+    transform: scale(1.1);
+}
+
+/* 🎮 ДЕЙСТВИЯ В ТАБЛИЦЕ */
 .table-actions {
     display: flex;
-    gap: 0.5rem;
+    gap: var(--space-2);
+    justify-content: flex-end;
 }
 
 .action-btn {
-    padding: 0.4rem 0.8rem;
+    padding: var(--space-2) var(--space-3);
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all var(--duration-normal) var(--ease-out);
     display: flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: var(--space-1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.action-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left var(--duration-slow) var(--ease-out);
+}
+
+.action-btn:hover::before {
+    left: 100%;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+    transition-duration: var(--duration-fast);
 }
 
 .action-btn.primary {
-    background: var(--primary);
-    color: var(--light);
+    background: var(--gradient-primary);
+    color: white;
 }
 
 .action-btn.primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
+    background: var(--gradient-accent);
+    box-shadow: var(--primary-glow);
 }
 
 .action-btn.secondary {
-    background: var(--light-3);
-    color: var(--dark-3);
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
 }
 
 .action-btn.secondary:hover {
-    background: var(--secondary);
-    color: var(--light);
+    background: var(--gradient-secondary);
+    color: white;
+    border-color: var(--secondary-500);
+}
+
+.action-btn i {
+    font-size: 0.875rem;
+    transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.action-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* 📊 СТИЛИ ДЛЯ РАЗНЫХ УРОВНЕЙ РИСКОВ В СТРОКАХ */
+.risk-table tr.critical:hover {
+    background: linear-gradient(135deg, var(--surface-1) 0%, var(--critical-50) 100%);
+}
+
+.risk-table tr.high:hover {
+    background: linear-gradient(135deg, var(--surface-1) 0%, var(--high-50) 100%);
+}
+
+.risk-table tr.medium:hover {
+    background: linear-gradient(135deg, var(--surface-1) 0%, var(--medium-50) 100%);
+}
+
+.risk-table tr.low:hover {
+    background: linear-gradient(135deg, var(--surface-1) 0%, var(--low-50) 100%);
+}
+
+/* 📭 ПУСТОЕ СОСТОЯНИЕ */
+.list-empty {
+    text-align: center;
+    padding: var(--space-16) var(--space-8);
+    color: var(--text-tertiary);
+}
+
+.list-empty-icon {
+    font-size: 4rem;
+    color: var(--text-quaternary);
+    margin-bottom: var(--space-4);
+    opacity: 0.5;
+    animation: float 3s ease-in-out infinite;
+}
+
+.list-empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-2);
+}
+
+.list-empty-description {
+    font-size: 1rem;
+    color: var(--text-tertiary);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* 🔍 ПОИСК В ТАБЛИЦЕ */
+.table-search {
+    margin-bottom: var(--space-6);
+    position: relative;
+}
+
+.table-search input {
+    width: 100%;
+    padding: var(--space-4) var(--space-6) var(--space-4) var(--space-12);
+    background: var(--surface-0);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all var(--duration-normal) var(--ease-out);
+    box-shadow: var(--shadow-sm);
+}
+
+.table-search input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1), var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.table-search i {
+    position: absolute;
+    left: var(--space-4);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-500);
+    font-size: 1.125rem;
+}
+
+/* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ */
+@media (max-width: 1024px) {
+    .list-table-container {
+        border-radius: var(--radius-lg);
+    }
+    
+    .risk-table th,
+    .risk-table td {
+        padding: var(--space-3);
+    }
+    
+    .risk-table th {
+        font-size: 0.75rem;
+    }
+    
+    .risk-table td {
+        font-size: 0.875rem;
+    }
+    
+    .action-btn {
+        padding: var(--space-2);
+    }
+    
+    .action-btn span {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .list-container {
+        padding: var(--space-6);
+    }
+    
+    .list-header {
+        margin-bottom: var(--space-6);
+    }
+    
+    .list-table-container {
+        font-size: 0.8125rem;
+        border-radius: var(--radius-md);
+    }
+    
+    .risk-table th,
+    .risk-table td {
+        padding: var(--space-2);
+    }
+    
+    .risk-table th {
+        font-size: 0.6875rem;
+    }
+    
+    .risk-table td {
+        font-size: 0.8125rem;
+    }
+    
+    .table-actions {
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+    
+    .action-btn {
+        font-size: 0.6875rem;
+        padding: var(--space-1) var(--space-2);
+        justify-content: center;
+    }
+    
+    .table-risk-level {
+        font-size: 0.6875rem;
+        padding: var(--space-1) var(--space-2);
+        min-width: 60px;
+    }
+    
+    .table-category {
+        font-size: 0.75rem;
+        padding: var(--space-1) var(--space-2);
+    }
+    
+    /* Упрощенные hover эффекты для мобильных */
+    .risk-table tr:hover {
+        transform: none;
+        background: var(--surface-1);
+    }
+    
+    .risk-table th:hover {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .list-container {
+        padding: var(--space-4);
+        border-radius: var(--radius-lg);
+    }
+    
+    .list-table-container {
+        border-radius: var(--radius-sm);
+    }
+    
+    .risk-table th:first-child,
+    .risk-table th:last-child {
+        border-radius: 0;
+    }
+    
+    .risk-table th,
+    .risk-table td {
+        padding: var(--space-1);
+    }
+    
+    .risk-table th {
+        font-size: 0.625rem;
+    }
+    
+    .risk-table td {
+        font-size: 0.75rem;
+    }
+    
+    .table-risk-level {
+        font-size: 0.625rem;
+        padding: var(--space-1);
+        min-width: 50px;
+    }
+    
+    .table-category {
+        font-size: 0.6875rem;
+        padding: var(--space-1);
+    }
+    
+    .action-btn {
+        font-size: 0.625rem;
+        padding: var(--space-1);
+        min-width: 32px;
+    }
+    
+    .action-btn i {
+        font-size: 0.75rem;
+    }
+}
+
+/* 🌙 ТЕМНАЯ ТЕМА АДАПТАЦИИ */
+[data-theme="dark"] .list-table-container {
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .risk-table {
+    background: var(--surface-2);
+}
+
+[data-theme="dark"] .risk-table td {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .risk-table tr:hover {
+    background: var(--surface-1);
+}
+
+[data-theme="dark"] .table-category {
+    background: var(--surface-3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .risk-table tr:hover .table-category {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--primary-400);
+}
+
+[data-theme="dark"] .action-btn.secondary {
+    background: var(--surface-3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .action-btn.secondary:hover {
+    border-color: var(--secondary-400);
+}
+
+[data-theme="dark"] .table-search input {
+    background: var(--surface-2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .table-search input:focus {
+    border-color: var(--primary-400);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* 🚀 ПРОИЗВОДИТЕЛЬНОСТЬ */
+.risk-table tr {
+    will-change: transform, background;
+}
+
+.risk-table.gpu-optimized tr {
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }

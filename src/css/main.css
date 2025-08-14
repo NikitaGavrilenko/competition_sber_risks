@@ -1,40 +1,12 @@
-/* ===== ГЛАВНЫЙ CSS ФАЙЛ - ИМПОРТ ВСЕХ МОДУЛЕЙ ===== */
-
-/* 1. Переменные и темы */
 @import url('./variables.css');
-
-/* 2. Анимации и эффекты */
 @import url('./animations.css');
-
-/* 3. Базовые стили */
 @import url('./base.css');
-
-/* 4. Основная структура */
 @import url('./layout.css');
-
-/* 5. Боковая панель */
 @import url('./sidebar.css');
-
-/* 6. Заголовок */
 @import url('./header.css');
-
-/* 7. Матрица рисков */
 @import url('./matrix.css');
-
-/* 8. Карточки */
 @import url('./cards.css');
-
-/* 9. Список */
 @import url('./list.css');
-
-/* 10. Модальные окна */
 @import url('./modal.css');
-
-/* 11. Уведомления */
 @import url('./notifications.css');
-
-/* 12. Дополнительные стили кнопок */
 @import url('./buttons.css');
-
-/* 13. Адаптивность */
-@import url('./responsive.css');

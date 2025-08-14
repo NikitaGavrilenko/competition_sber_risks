@@ -1,0 +1,37 @@
+/* 🔧 UTILITY CLASSES */
+
+/* Glassmorphism утилиты */
+.glass-light { background: var(--glass-light); backdrop-filter: var(--backdrop-blur); }
+.glass-heavy { background: var(--glass-heavy); backdrop-filter: var(--backdrop-blur); }
+
+/* Анимации */
+.animate-float { animation: gentleFloat 3s ease-in-out infinite; }
+.animate-pulse { animation: softPulse 2s infinite; }
+.animate-morph { animation: morphShape 4s infinite; }
+
+/* 3D эффекты */
+.effect-3d { transform-style: preserve-3d; }
+.hover-lift:hover { transform: translateY(-8px) translateZ(10px); }
+.hover-tilt:hover { transform: perspective(1000px) rotateX(5deg) rotateY(5deg); }
+
+/* Градиенты */
+.bg-gradient-glass { background: var(--gradient-glass); }
+.bg-gradient-neon { background: var(--gradient-neon); }
+
+/* Свечение */
+.glow-primary { box-shadow: var(--primary-glow); }
+.glow-critical { box-shadow: var(--critical-glow); }
+
+/* Spacing responsive */
+.p-responsive { padding: var(--mobile-padding); }
+.gap-responsive { gap: var(--mobile-gap); }
+
+@media (min-width: 768px) {
+    .p-responsive { padding: var(--tablet-padding); }
+    .gap-responsive { gap: var(--tablet-gap); }
+}
+
+@media (min-width: 1024px) {
+    .p-responsive { padding: var(--desktop-padding); }
+    .gap-responsive { gap: var(--desktop-gap); }
+}
