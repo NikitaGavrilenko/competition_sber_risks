@@ -1,11 +1,9 @@
-/* ===== УПРОЩЕННЫЕ ПЕРЕМЕННЫЕ CSS ===== */
+/* ===== МИНИМАЛЬНЫЕ CSS ПЕРЕМЕННЫЕ ===== */
+
 :root {
     /* Основные цвета */
     --primary: #6366f1;
     --primary-dark: #4f46e5;
-    --secondary: #06b6d4;
-    --secondary-dark: #0891b2;
-    --accent: #f59e0b;
     
     /* Нейтральные цвета */
     --white: #ffffff;
@@ -20,145 +18,51 @@
     --gray-800: #1e293b;
     --gray-900: #0f172a;
     
-    /* ЦВЕТА РИСКОВ - СОХРАНЯЕМ ВСЕ */
-    --critical: #ef4444;
-    --critical-50: #fef2f2;
-    --critical-100: #fee2e2;
-    --critical-500: #ef4444;
-    --critical-600: #dc2626;
-    --critical-700: #b91c1c;
-    
-    --high: #f97316;
-    --high-50: #fff7ed;
-    --high-100: #ffedd5;
-    --high-500: #f97316;
-    --high-600: #ea580c;
-    
-    --medium: #eab308;
-    --medium-50: #fefce8;
-    --medium-100: #fef3c7;
-    --medium-500: #eab308;
-    --medium-600: #ca8a04;
-    
-    --low: #22c55e;
-    --low-50: #f0fdf4;
-    --low-100: #dcfce7;
-    --low-500: #22c55e;
-    --low-600: #16a34a;
+    /* Цвета рисков */
+    --critical: #dc2626;
+    --high: #ea580c;
+    --medium: #ca8a04;
+    --low: #16a34a;
     
     /* Поверхности */
     --surface-0: var(--white);
     --surface-1: var(--gray-50);
     --surface-2: var(--gray-100);
-    --surface-3: var(--gray-200);
-    
-    /* Пространство */
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.25rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-    --space-10: 2.5rem;
-    --space-12: 3rem;
-    
-    /* Радиусы */
-    --radius-sm: 6px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-    
-    /* Тени */
-    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    
-    /* Анимации */
-    --duration-fast: 150ms;
-    --duration-normal: 250ms;
-    --duration-slow: 350ms;
-    
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
-    --transition: all var(--duration-normal) var(--ease-out);
-    
-    /* Layout */
-    --sidebar-width: 320px;
-    --header-height: 80px;
-    --content-max-width: 1400px;
-    
-    /* Breakpoints */
-    --bp-sm: 640px;
-    --bp-md: 768px;
-    --bp-lg: 1024px;
-    --bp-xl: 1280px;
     
     /* Текст */
     --text-primary: var(--gray-900);
     --text-secondary: var(--gray-600);
     --text-tertiary: var(--gray-500);
-    --text-inverse: var(--white);
     
     /* Границы */
     --border-color: var(--gray-200);
-    --border-color-hover: var(--gray-300);
-    --border-color-focus: var(--primary);
+    
+    /* Размеры */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    
+    /* Layout */
+    --sidebar-width: 320px;
+    --header-height: 80px;
 }
 
 /* Темная тема */
 [data-theme="dark"] {
-    --glass: rgba(15, 23, 42, 0.8);
-    --glass-border: rgba(148, 163, 184, 0.3);
-    --shadow-soft: var(--shadow-dark);
-    --shadow-medium: var(--shadow-dark);
-    --shadow-large: var(--shadow-dark-xl);
-    --shadow-xl: var(--shadow-dark-xl);
+    --surface-0: var(--gray-900);
+    --surface-1: var(--gray-800);
+    --surface-2: var(--gray-700);
     
-    /* Улучшенные градиенты для темной темы */
-    --gradient-hero: linear-gradient(135deg, #1e40af 0%, #7c3aed 50%, #059669 100%);
-    --gradient-primary: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+    --text-primary: var(--gray-100);
+    --text-secondary: var(--gray-300);
+    --text-tertiary: var(--gray-400);
+    
+    --border-color: var(--gray-700);
 }
 
 /* Базовые настройки */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-/* Отключение анимаций для пользователей с предпочтением reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* Расширенная палитра */
---teal: #14b8a6;
---teal-light: #5eead4;
---teal-dark: #0f766e;
-
---indigo: #6366f1;
---indigo-light: #a5b4fc;
---indigo-dark: #4338ca;
-
---rose: #f43f5e;
---rose-light: #fda4af;
---rose-dark: #e11d48;
-
-/* Semantic colors */
---success: var(--secondary);
---warning: var(--accent);
---error: var(--critical);
---info: var(--primary);
-
-/* Улучшенные shadow для dark mode */
---shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.3);
---shadow-dark-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
-

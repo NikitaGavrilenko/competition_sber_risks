@@ -1,40 +1,33 @@
-/* ===== УПРОЩЕННЫЕ СТИЛИ КНОПОК ===== */
+/* ===== МИНИМАЛЬНЫЕ КНОПКИ ===== */
 
-/* Кнопки по типам */
+/* Базовые кнопки уже определены в base.css */
+
+/* Дополнительные типы кнопок */
 .btn-danger {
     background: var(--critical);
     color: white;
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
 }
 
 .btn-danger:hover {
-    background: var(--critical-600);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+    background: #b91c1c;
 }
 
 .btn-success {
     background: var(--low);
     color: white;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 .btn-success:hover {
-    background: var(--low-600);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    background: #15803d;
 }
 
 .btn-warning {
     background: var(--medium);
     color: white;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
 }
 
 .btn-warning:hover {
-    background: var(--medium-600);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    background: #a16207;
 }
 
 /* Размеры кнопок */
@@ -56,11 +49,12 @@
 /* Группы кнопок */
 .btn-group {
     display: flex;
-    gap: 0.5rem;
+    gap: 0;
 }
 
 .btn-group .btn {
     border-radius: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-group .btn:first-child {
@@ -69,64 +63,95 @@
 
 .btn-group .btn:last-child {
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    border-right: none;
 }
 
 .btn-group .btn:only-child {
     border-radius: var(--radius-md);
+    border-right: none;
 }
 
 /* Отключенное состояние */
 .btn:disabled {
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
-    transform: none !important;
     background: var(--gray-400) !important;
     color: var(--gray-600) !important;
 }
 
-.btn:disabled:hover {
-    transform: none !important;
-    box-shadow: var(--shadow-sm) !important;
+/* Кнопки-ссылки */
+.btn-link {
+    background: none;
+    color: var(--primary);
+    border: none;
+    padding: 0;
+    text-decoration: underline;
 }
 
-/* Улучшенные hover эффекты для кнопок */
-.btn:hover {
-    transform: translateY(-2px) scale(1.02);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: var(--shadow-xl);
+.btn-link:hover {
+    background: none;
+    color: var(--primary-dark);
 }
 
-.btn:active {
-    transform: translateY(0) scale(0.98);
+/* Кнопки-иконки */
+.btn-icon-only {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Улучшенные focus states */
-.btn:focus-visible {
-    outline: 2px solid var(--primary);
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+.btn-icon-small {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 0.8rem;
 }
 
-/* Ripple эффект для кнопок */
-.btn {
-    position: relative;
-    overflow: hidden;
+/* Outline кнопки */
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
 }
 
-.btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
 }
 
-.btn:active::after {
-    width: 200px;
-    height: 200px;
+.btn-outline-secondary {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-outline-secondary:hover {
+    background: var(--surface-1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+    }
+    
+    .btn-group .btn {
+        border-radius: var(--radius-md);
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin-bottom: -1px;
+    }
+    
+    .btn-group .btn:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
 }

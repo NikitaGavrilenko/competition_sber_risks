@@ -1,9 +1,9 @@
-/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+/* ===== МИНИМАЛЬНАЯ АДАПТИВНОСТЬ ===== */
 
+/* Планшеты и ниже */
 @media (max-width: 1024px) {
     .sidebar {
         transform: translateX(-100%);
-        transition: transform 0.3s ease;
     }
     
     .sidebar.open {
@@ -39,14 +39,23 @@
     }
 }
 
+/* Мобильные устройства */
 @media (max-width: 768px) {
     :root {
         --sidebar-width: 100%;
         --header-height: 70px;
     }
     
+    .header {
+        padding: 0 1rem;
+    }
+    
     .header-title {
         font-size: 1.25rem;
+    }
+    
+    .header-actions {
+        gap: 0.5rem;
     }
     
     .matrix-grid {
@@ -63,39 +72,26 @@
         font-size: 1.8rem;
     }
     
-    .btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
+    .search-section {
+        padding: 1rem;
     }
     
     .content-area {
         padding: 1rem;
     }
     
-    .matrix-container, .cards-container, .list-container {
+    .view-container {
         padding: 1.5rem;
+        margin-bottom: 1.5rem;
     }
     
-    .view-switcher {
-        order: -1;
-        margin-right: 0;
-        margin-bottom: 1rem;
-        width: 100%;
-        justify-content: center;
-    }
-    
-    .header-actions {
-        flex-wrap: wrap;
-        gap: 0.5rem;
+    .view-title {
+        font-size: 1.5rem;
     }
     
     .cards-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
-    }
-    
-    .risk-card {
-        padding: 1.25rem;
     }
     
     .card-metrics {
@@ -117,32 +113,55 @@
         font-size: 0.7rem;
         padding: 0.4rem 0.8rem;
     }
-}
-
-@media (max-width: 480px) {
-    .header {
-        padding: 0 1rem;
+    
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+        min-height: 44px;
+        min-width: 44px;
     }
     
+    .btn-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .view-switcher {
+        order: -1;
+        margin-right: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+}
+
+/* Маленькие мобильные */
+@media (max-width: 480px) {
     .header-title {
         font-size: 1rem;
     }
     
-    .search-section {
-        padding: 1rem;
-    }
-    
     .search-input {
-        padding: 0.75rem 1rem;
+        padding: 0.75rem 0.75rem 0.75rem 2.5rem;
         font-size: 0.9rem;
     }
     
-    .matrix-container, .cards-container, .list-container {
+    .search-icon {
+        left: 0.75rem;
+        font-size: 1rem;
+    }
+    
+    .view-container {
         padding: 1rem;
     }
     
-    .matrix-title, .cards-title, .list-title {
-        font-size: 1.5rem;
+    .view-title {
+        font-size: 1.25rem;
     }
     
     .matrix-grid {
@@ -181,27 +200,14 @@
         font-size: 0.75rem;
     }
     
-    .btn-icon {
-        width: 40px;
-        height: 40px;
-    }
-    
     .modal-content {
         width: 95%;
         margin: 1rem;
     }
     
-    .modal-header {
-        padding: 1rem 1.5rem;
-    }
-    
-    .modal-body {
-        padding: 1.5rem;
-    }
-    
     .info-grid {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
+        gap: 0.5rem;
     }
     
     .sidebar-section {
@@ -213,16 +219,14 @@
     }
 }
 
-/* Улучшенная мобильная навигация */
+/* Overlay для мобильного меню */
 .mobile-nav-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
 }
 
 .mobile-nav-overlay.active {
@@ -230,15 +234,14 @@
     visibility: visible;
 }
 
-/* Улучшенные touch targets */
+/* Скрытие скроллбара на мобильных для лучшего UX */
 @media (max-width: 768px) {
-    .btn, .view-btn, .action-btn {
-        min-height: 44px;
-        min-width: 44px;
+    .sidebar::-webkit-scrollbar {
+        display: none;
     }
     
-    .matrix-cell {
-        min-height: 60px;
+    .sidebar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 }
-

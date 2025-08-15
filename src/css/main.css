@@ -1,84 +1,120 @@
-/* ===== УПРОЩЕННЫЙ CSS ФАЙЛ - ОСНОВНЫЕ ФУНКЦИИ ===== */
+/* ===== ГЛАВНЫЙ МИНИМАЛЬНЫЙ CSS ФАЙЛ ===== */
 
-/* 1. Базовые переменные */
+/* Импортируем все модули в правильном порядке */
 @import url('./variables.css');
-
-/* 2. Базовые стили */
 @import url('./base.css');
-
-/* 3. Основная структура */
 @import url('./layout.css');
-
-/* 4. Боковая панель */
 @import url('./sidebar.css');
-
-/* 5. Заголовок */
 @import url('./header.css');
-
-/* 6. Матрица рисков */
 @import url('./matrix.css');
-
-/* 7. Карточки */
 @import url('./cards.css');
-
-/* 8. Список */
 @import url('./list.css');
-
-/* 9. Модальные окна */
 @import url('./modal.css');
-
-/* 10. Уведомления */
-@import url('./notifications.css');
-
-/* 11. Кнопки */
 @import url('./buttons.css');
-
-/* 12. Адаптивность */
+@import url('./notifications.css');
 @import url('./responsive.css');
+@import url('./dark-theme.css');
 
-/* 13. Scrollbars */
-@import url('./scrollbar.css');
+/* ===== ДОПОЛНИТЕЛЬНЫЕ БАЗОВЫЕ СТИЛИ ===== */
 
-/* 14. Tooltips */
-@import url('./tooltips.css');
-
-
-/* ===== БАЗОВЫЕ СТИЛИ ===== */
-
-/* Простая прокрутка */
+/* Простые скроллбары */
 ::-webkit-scrollbar {
     width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--surface-1);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: var(--border-color);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: var(--text-secondary);
 }
 
-/* Базовое выделение текста */
+/* Выделение текста */
 ::selection {
-    background: #6366f1;
+    background: var(--primary);
     color: white;
 }
 
 /* Фокус для доступности */
 *:focus-visible {
-    outline: 2px solid #6366f1;
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
 
-/* Простые переходы */
-button, input, select, textarea, a {
-    transition: all 0.2s ease;
+/* Плавающие частицы (минимальные) */
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
 }
+
+.particle {
+    position: absolute;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+/* Темная тема для скроллбаров */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--gray-800);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--gray-600);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-500);
+}
+
+/* Утилитарные классы */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+
+.cursor-pointer { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+
+.select-none { user-select: none; }
+
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+.border { border: 1px solid var(--border-color); }
+.border-0 { border: none; }
+
+.rounded { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-full { border-radius: 9999px; }
+
+.shadow { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); }
 
 /* Отключение анимаций для пользователей с предпочтением reduced motion */
 @media (prefers-reduced-motion: reduce) {
@@ -86,5 +122,31 @@ button, input, select, textarea, a {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Печать */
+@media print {
+    .sidebar,
+    .header,
+    .mobile-menu-btn,
+    .btn,
+    .notification {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .content-area {
+        padding: 0 !important;
+    }
+    
+    .view-container {
+        border: none !important;
+        box-shadow: none !important;
     }
 }
