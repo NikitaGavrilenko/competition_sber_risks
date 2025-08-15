@@ -1,4 +1,5 @@
-/* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ */
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+
 @media (max-width: 1024px) {
     .sidebar {
         transform: translateX(-100%);
@@ -42,8 +43,6 @@
     :root {
         --sidebar-width: 100%;
         --header-height: 70px;
-        --border-radius: 12px;
-        --border-radius-lg: 18px;
     }
     
     .header-title {
@@ -213,3 +212,33 @@
         margin-bottom: 1rem;
     }
 }
+
+/* Улучшенная мобильная навигация */
+.mobile-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Улучшенные touch targets */
+@media (max-width: 768px) {
+    .btn, .view-btn, .action-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .matrix-cell {
+        min-height: 60px;
+    }
+}
+

@@ -1,16 +1,13 @@
-/* 🏗️ MODERN FOUNDATION & TYPOGRAPHY */
+/* ===== УПРОЩЕННЫЕ БАЗОВЫЕ СТИЛИ ===== */
 
-/* 🔧 УЛУЧШЕННЫЙ CSS RESET */
-*,
-*::before,
-*::after {
+/* Базовый сброс */
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 0 solid transparent;
 }
 
-/* 📱 УЛУЧШЕННЫЕ DEFAULTS */
+/* HTML и body */
 html {
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
                  'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
@@ -18,7 +15,6 @@ html {
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
     height: 100%;
 }
@@ -32,41 +28,23 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-    
-    /* Современный фон с градиентом */
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
-        linear-gradient(135deg, var(--surface-0) 0%, var(--surface-1) 100%);
-    
-    /* Плавные переходы для темы */
     transition: background var(--duration-slow) var(--ease-out),
                 color var(--duration-slow) var(--ease-out);
-    
-    /* Производительность */
-    will-change: background, color;
 }
 
-/* 🎨 ТИПОГРАФИКА - ИЕРАРХИЯ */
+/* Заголовки */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     line-height: 1.2;
     color: var(--text-primary);
-    letter-spacing: -0.025em;
     margin: 0;
 }
 
 h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 800;
-    background: var(--gradient-hero);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 200%;
-    animation: gradientShift 3s ease infinite;
+    color: var(--primary);
 }
 
 h2 {
@@ -101,7 +79,7 @@ h6 {
     letter-spacing: 0.05em;
 }
 
-/* 📝 ПАРАГРАФЫ И ТЕКСТ */
+/* Параграфы */
 p {
     margin: 0 0 var(--space-4) 0;
     color: var(--text-secondary);
@@ -124,52 +102,31 @@ p {
 
 .tiny {
     font-size: 0.75rem;
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 500;
 }
 
-/* 🔗 ССЫЛКИ */
+/* Ссылки */
 a {
-    color: var(--primary-500);
+    color: var(--primary);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
-    position: relative;
 }
 
 a:hover {
-    color: var(--primary-600);
+    color: var(--primary-dark);
 }
 
 a:focus {
-    outline: 2px solid var(--primary-500);
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
     border-radius: var(--radius-sm);
 }
 
-/* Подчеркивание по hover */
-.link-underline {
-    position: relative;
-}
-
-.link-underline::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: width var(--duration-normal) var(--ease-out);
-}
-
-.link-underline:hover::after {
-    width: 100%;
-}
-
-/* 📋 СПИСКИ */
+/* Списки */
 ul, ol {
     margin: 0 0 var(--space-4) var(--space-6);
     padding: 0;
@@ -193,12 +150,12 @@ ul li::before {
     top: 0.6em;
     width: 6px;
     height: 6px;
-    background: var(--gradient-primary);
+    background: var(--primary);
     border-radius: 50%;
     transform: translateY(-50%);
 }
 
-/* 📊 ТАБЛИЦЫ */
+/* Таблицы */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -216,7 +173,7 @@ th, td {
 }
 
 th {
-    background: var(--gradient-primary);
+    background: var(--primary);
     color: white;
     font-weight: 600;
     font-size: 0.875rem;
@@ -229,12 +186,12 @@ tbody tr:hover {
     transition: background var(--duration-fast) var(--ease-out);
 }
 
-/* 💬 ЦИТАТЫ */
+/* Цитаты */
 blockquote {
     margin: var(--space-8) 0;
     padding: var(--space-6);
     background: var(--surface-1);
-    border-left: 4px solid var(--primary-500);
+    border-left: 4px solid var(--primary);
     border-radius: var(--radius-md);
     position: relative;
     font-style: italic;
@@ -247,16 +204,16 @@ blockquote::before {
     top: -10px;
     left: var(--space-4);
     font-size: 3rem;
-    color: var(--primary-300);
+    color: var(--primary);
     font-family: serif;
 }
 
-/* ⌨️ КОД */
+/* Код */
 code {
     font-family: 'Fira Code', 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
     font-size: 0.875em;
     background: var(--surface-2);
-    color: var(--primary-600);
+    color: var(--primary);
     padding: 0.2em 0.4em;
     border-radius: var(--radius-sm);
     font-weight: 500;
@@ -277,7 +234,7 @@ pre code {
     color: var(--text-primary);
 }
 
-/* 🖼️ МЕДИА */
+/* Медиа */
 img, svg, video, canvas, audio, iframe, embed, object {
     display: block;
     max-width: 100%;
@@ -294,7 +251,7 @@ img:hover {
     box-shadow: var(--shadow-lg);
 }
 
-/* 📝 ФОРМЫ */
+/* Формы */
 input, textarea, select, button {
     font: inherit;
     color: inherit;
@@ -311,9 +268,8 @@ input, textarea, select {
 
 input:focus, textarea:focus, select:focus {
     outline: none;
-    border-color: var(--primary-500);
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-    transform: translateY(-1px);
 }
 
 input:hover, textarea:hover, select:hover {
@@ -321,13 +277,13 @@ input:hover, textarea:hover, select:hover {
 }
 
 ::placeholder {
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
     opacity: 1;
 }
 
-/* 🎛️ КНОПКИ БАЗОВЫЕ */
+/* Кнопки */
 button {
-    background: var(--gradient-primary);
+    background: var(--primary);
     color: white;
     border: none;
     border-radius: var(--radius-md);
@@ -335,13 +291,12 @@ button {
     font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
-    position: relative;
-    overflow: hidden;
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
 button:active {
@@ -349,7 +304,7 @@ button:active {
 }
 
 button:focus {
-    outline: 2px solid var(--primary-500);
+    outline: 2px solid var(--primary);
     outline-offset: 2px;
 }
 
@@ -359,7 +314,7 @@ button:disabled {
     transform: none;
 }
 
-/* 🎯 УТИЛИТАРНЫЕ КЛАССЫ */
+/* Утилитарные классы */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -392,25 +347,13 @@ button:disabled {
     overflow: hidden;
 }
 
-/* 🎨 ЦВЕТОВЫЕ УТИЛИТЫ */
+/* Цветовые утилиты */
 .text-primary { color: var(--text-primary); }
 .text-secondary { color: var(--text-secondary); }
 .text-tertiary { color: var(--text-tertiary); }
-.text-quaternary { color: var(--text-quaternary); }
 .text-inverse { color: var(--text-inverse); }
 
-.text-gradient {
-    background: var(--gradient-primary);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.text-glow {
-    text-shadow: 0 0 20px currentColor;
-}
-
-/* 📏 SPACING УТИЛИТЫ */
+/* Spacing утилиты */
 .p-0 { padding: 0; }
 .p-1 { padding: var(--space-1); }
 .p-2 { padding: var(--space-2); }
@@ -434,7 +377,7 @@ button:disabled {
 .ml-auto { margin-left: auto; }
 .mr-auto { margin-right: auto; }
 
-/* 🔄 DISPLAY УТИЛИТЫ */
+/* Display утилиты */
 .block { display: block; }
 .inline { display: inline; }
 .inline-block { display: inline-block; }
@@ -443,7 +386,7 @@ button:disabled {
 .grid { display: grid; }
 .hidden { display: none; }
 
-/* 🎯 FLEX УТИЛИТЫ */
+/* Flex утилиты */
 .flex-col { flex-direction: column; }
 .flex-row { flex-direction: row; }
 .flex-wrap { flex-wrap: wrap; }
@@ -465,44 +408,10 @@ button:disabled {
 .flex-auto { flex: 1 1 auto; }
 .flex-none { flex: none; }
 
-/* 🌟 ВИЗУАЛЬНЫЕ ЭФФЕКТЫ */
-.blur-sm { filter: var(--blur-sm); }
-.blur-md { filter: var(--blur-md); }
-.blur-lg { filter: var(--blur-lg); }
-
-.grayscale { filter: grayscale(100%); }
-.sepia { filter: sepia(100%); }
-.invert { filter: invert(1); }
-
-.opacity-0 { opacity: 0; }
-.opacity-25 { opacity: 0.25; }
-.opacity-50 { opacity: 0.5; }
-.opacity-75 { opacity: 0.75; }
-.opacity-100 { opacity: 1; }
-
-/* 🎭 ТЕМНАЯ ТЕМА АДАПТАЦИИ */
-[data-theme="dark"] body {
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(6, 182, 212, 0.05) 0%, transparent 50%),
-        linear-gradient(135deg, var(--surface-0) 0%, var(--surface-1) 100%);
-}
-
-[data-theme="dark"] img:hover {
-    filter: brightness(1.1);
-}
-
-[data-theme="dark"] code {
-    background: var(--surface-3);
-    color: var(--primary-400);
-}
-
-/* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ */
+/* Мобильная адаптация */
 @media (max-width: 768px) {
     body {
         font-size: 14px;
-        background: var(--surface-0); /* Упрощенный фон на мобильных */
     }
     
     h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
@@ -522,7 +431,7 @@ button:disabled {
     }
 }
 
-/* 🎪 УЛУЧШЕНИЯ ДЛЯ ACCESSIBILITY */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;

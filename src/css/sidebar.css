@@ -1,24 +1,23 @@
-/* ✨ SIDEBAR - ЧИСТЫЙ И ДРУЖЕЛЮБНЫЙ */
+/* ===== УПРОЩЕННАЯ БОКОВАЯ ПАНЕЛЬ ===== */
+
 .sidebar {
     width: var(--sidebar-width);
-    background: var(--glass);
-    backdrop-filter: var(--blur);
-    border-right: 1px solid var(--glass-border);
+    background: var(--surface-0);
+    border-right: 1px solid var(--border-color);
     position: fixed;
     height: 100vh;
     left: 0;
     top: 0;
     z-index: 1000;
     overflow-y: auto;
-    box-shadow: var(--shadow-large);
-    animation: fadeSlideIn 0.6s ease-out;
+    box-shadow: var(--shadow-lg);
 }
 
 .sidebar-header {
     padding: 2rem 1.5rem;
     text-align: center;
-    background: var(--gradient-hero);
-    color: var(--light);
+    background: var(--primary);
+    color: white;
     position: relative;
     overflow: hidden;
 }
@@ -27,7 +26,7 @@
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--light);
+    color: white;
 }
 
 .sidebar-header p {
@@ -38,7 +37,7 @@
 
 .sidebar-section {
     padding: 1.5rem;
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .sidebar-section h3 {
@@ -57,10 +56,9 @@
     position: absolute;
     left: 0;
     color: var(--secondary);
-    animation: softPulse 2s infinite;
 }
 
-/* 🎛️ ФИЛЬТРЫ */
+/* Фильтры */
 .filter-group {
     margin-bottom: 1.25rem;
 }
@@ -69,7 +67,7 @@
     display: block;
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--dark-3);
+    color: var(--text-secondary);
     margin-bottom: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -78,35 +76,32 @@
 .filter-select, .search-input {
     width: 100%;
     padding: 0.8rem 1rem;
-    background: var(--light);
-    border: 2px solid var(--light-5);
-    border-radius: var(--border-radius);
-    color: var(--dark);
+    background: var(--surface-0);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
     font-size: 0.9rem;
     transition: all 0.3s ease;
     font-weight: 500;
-    backdrop-filter: blur(5px);
 }
 
 .filter-select:focus, .search-input:focus {
     outline: none;
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    transform: translateY(-1px);
 }
 
 .filter-select:hover, .search-input:hover {
-    border-color: var(--primary-light);
+    border-color: var(--primary);
 }
 
-/* 🎨 ЦВЕТОВАЯ ЛЕГЕНДА */
+/* Цветовая легенда */
 .risk-legend {
-    background: var(--light);
-    border-radius: var(--border-radius);
+    background: var(--surface-0);
+    border-radius: var(--radius-md);
     padding: 1.25rem;
-    border: 1px solid var(--light-5);
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
 }
 
 .legend-item {
@@ -121,7 +116,7 @@
 }
 
 .legend-item:hover {
-    background: linear-gradient(135deg, var(--light-3) 0%, var(--light-2) 100%);
+    background: var(--surface-1);
     transform: translateX(4px);
 }
 
@@ -134,31 +129,30 @@
     height: 16px;
     border-radius: 50%;
     flex-shrink: 0;
-    animation: gentleFloat 3s ease-in-out infinite;
     border: 2px solid rgba(255, 255, 255, 0.8);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .legend-item.critical .legend-color { 
-    background: var(--critical-bg); 
+    background: var(--critical); 
 }
 .legend-item.high .legend-color { 
-    background: var(--high-bg); 
+    background: var(--high); 
 }
 .legend-item.medium .legend-color { 
-    background: var(--medium-bg); 
+    background: var(--medium); 
 }
 .legend-item.low .legend-color { 
-    background: var(--low-bg); 
+    background: var(--low); 
 }
 
 .legend-text {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--dark-2);
+    color: var(--text-primary);
 }
 
-/* 📊 СТАТИСТИКА */
+/* Статистика */
 .info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -166,18 +160,17 @@
 }
 
 .info-item {
-    background: linear-gradient(135deg, var(--light-3) 0%, var(--light-2) 100%);
+    background: var(--surface-1);
     padding: 1rem;
-    border-radius: var(--border-radius);
-    border: 1px solid var(--light-5);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
     text-align: center;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
 }
 
 .info-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .info-label {
@@ -193,16 +186,5 @@
 .info-value {
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--dark);
-}
-
-/* Анимации */
-@keyframes softPulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-@keyframes gentleFloat {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-3px); }
+    color: var(--text-primary);
 }

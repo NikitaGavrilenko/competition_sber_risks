@@ -1,6 +1,6 @@
-/* 🎯 ULTRA MODERN LAYOUT SYSTEM */
+/* ===== УПРОЩЕННАЯ СИСТЕМА LAYOUT ===== */
 
-/* 🏗️ ОСНОВНОЙ КОНТЕЙНЕР ПРИЛОЖЕНИЯ */
+/* Основной контейнер приложения */
 .app-container {
     display: flex;
     min-height: 100vh;
@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-/* 📱 ГЛАВНЫЙ КОНТЕНТ */
+/* Главный контент */
 .main-content {
     flex: 1;
     margin-left: var(--sidebar-width);
@@ -21,16 +21,14 @@
     flex-direction: column;
 }
 
-/* 🔍 СЕКЦИЯ ПОИСКА */
+/* Секция поиска */
 .search-section {
     padding: var(--space-6) var(--space-8);
-    background: var(--surface-glass-strong);
-    backdrop-filter: var(--blur-lg);
+    background: var(--surface-1);
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: var(--header-height);
     z-index: 100;
-    animation: slideDown var(--duration-normal) var(--ease-out);
 }
 
 .search-container {
@@ -46,16 +44,15 @@
     font-weight: 500;
     background: var(--surface-0);
     border: 2px solid var(--border-color);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-xl);
     color: var(--text-primary);
     transition: var(--transition);
     box-shadow: var(--shadow-sm);
 }
 
 .search-input:focus {
-    border-color: var(--primary-500);
-    box-shadow: var(--shadow-glow);
-    transform: translateY(-2px);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
     outline: none;
 }
 
@@ -65,7 +62,7 @@
 }
 
 .search-input::placeholder {
-    color: var(--text-quaternary);
+    color: var(--text-tertiary);
     font-weight: 400;
 }
 
@@ -74,59 +71,39 @@
     left: var(--space-5);
     top: 50%;
     transform: translateY(-50%);
-    color: var(--primary-500);
+    color: var(--primary);
     font-size: 1.25rem;
     pointer-events: none;
-    transition: var(--transition);
 }
 
-.search-input:focus ~ .search-icon {
-    color: var(--primary-600);
-    transform: translateY(-50%) scale(1.1);
-}
-
-/* 📊 ОСНОВНАЯ КОНТЕНТНАЯ ОБЛАСТЬ */
+/* Основная контентная область */
 .content-area {
     flex: 1;
     padding: var(--space-8);
     max-width: var(--content-max-width);
     margin: 0 auto;
     width: 100%;
-    animation: fadeIn var(--duration-slow) var(--ease-out);
 }
 
-/* 🎯 КОНТЕЙНЕРЫ ДЛЯ РАЗНЫХ ВИДОВ */
+/* Контейнеры для разных видов */
 .view-container {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-xl);
+    background: var(--surface-1);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-lg);
     padding: var(--space-8);
     margin-bottom: var(--space-8);
-    box-shadow: var(--shadow-2xl);
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
     transition: var(--transition);
 }
 
-.view-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient-primary);
-    opacity: 0.8;
-}
-
 .view-container:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-float);
-    border-color: var(--primary-200);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
 }
 
-/* 🎨 ЗАГОЛОВКИ ВИДОВ */
+/* Заголовки видов */
 .view-header {
     text-align: center;
     margin-bottom: var(--space-8);
@@ -136,12 +113,8 @@
 .view-title {
     font-size: clamp(1.875rem, 4vw, 2.5rem);
     font-weight: 800;
-    background: var(--gradient-hero);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
     margin-bottom: var(--space-2);
-    animation: slideUp var(--duration-normal) var(--ease-out);
 }
 
 .view-subtitle {
@@ -149,10 +122,9 @@
     font-size: 1.125rem;
     font-weight: 500;
     opacity: 0.8;
-    animation: slideUp var(--duration-normal) var(--ease-out) 0.1s both;
 }
 
-/* 🃏 GRID СИСТЕМЫ */
+/* Grid системы */
 .grid {
     display: grid;
     gap: var(--space-6);
@@ -169,7 +141,7 @@
 .grid-5 { grid-template-columns: repeat(5, 1fr); }
 .grid-6 { grid-template-columns: repeat(6, 1fr); }
 
-/* 📱 АДАПТИВНЫЕ GRID СИСТЕМЫ */
+/* Адаптивные grid системы */
 .grid-responsive-sm {
     grid-template-columns: 1fr;
 }
@@ -186,7 +158,7 @@
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
-/* 🔄 FLEX СИСТЕМЫ */
+/* Flex системы */
 .flex-container {
     display: flex;
     gap: var(--space-4);
@@ -226,7 +198,7 @@
     justify-content: flex-end;
 }
 
-/* 📦 КОНТЕЙНЕРЫ С РАЗМЕРАМИ */
+/* Контейнеры с размерами */
 .container {
     max-width: var(--content-max-width);
     margin: 0 auto;
@@ -268,96 +240,38 @@
     padding: 0 var(--space-4);
 }
 
-/* 🎯 СПЕЦИАЛЬНЫЕ КОНТЕЙНЕРЫ ДЛЯ ПРОЕКТА */
+/* Специальные контейнеры для проекта */
 .matrix-container {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-xl);
+    background: var(--surface-1);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-lg);
     padding: var(--space-8);
-    box-shadow: var(--shadow-2xl);
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
-    animation: scaleIn var(--duration-slow) var(--ease-out);
 }
 
 .cards-container {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-xl);
+    background: var(--surface-1);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-lg);
     padding: var(--space-8);
-    box-shadow: var(--shadow-2xl);
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
-    animation: slideUp var(--duration-slow) var(--ease-out);
 }
 
 .list-container {
-    background: var(--surface-glass);
-    backdrop-filter: var(--blur-xl);
+    background: var(--surface-1);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-2xl);
+    border-radius: var(--radius-lg);
     padding: var(--space-8);
-    box-shadow: var(--shadow-2xl);
+    box-shadow: var(--shadow-md);
     position: relative;
     overflow: hidden;
-    animation: fadeIn var(--duration-slow) var(--ease-out);
 }
 
-/* 🌟 ДЕКОРАТИВНЫЕ ЭЛЕМЕНТЫ */
-.matrix-container::before,
-.cards-container::before,
-.list-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient-primary);
-    opacity: 0.8;
-}
-
-.matrix-container::after {
-    content: '';
-    position: absolute;
-    top: var(--space-4);
-    right: var(--space-4);
-    width: 60px;
-    height: 60px;
-    background: var(--gradient-primary);
-    border-radius: 50%;
-    opacity: 0.1;
-    animation: float 3s ease-in-out infinite;
-}
-
-.cards-container::after {
-    content: '';
-    position: absolute;
-    bottom: var(--space-4);
-    left: var(--space-4);
-    width: 40px;
-    height: 40px;
-    background: var(--gradient-secondary);
-    border-radius: var(--radius-md);
-    opacity: 0.1;
-    animation: float 4s ease-in-out infinite reverse;
-}
-
-.list-container::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: var(--space-4);
-    width: 80px;
-    height: 2px;
-    background: var(--gradient-accent);
-    opacity: 0.2;
-    animation: pulse 2s ease-in-out infinite;
-}
-
-/* 📋 ЗАГОЛОВКИ С ИКОНКАМИ */
+/* Заголовки с иконками */
 .header-with-icon {
     display: flex;
     align-items: center;
@@ -368,7 +282,7 @@
 .header-icon {
     width: 40px;
     height: 40px;
-    background: var(--gradient-primary);
+    background: var(--primary);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
@@ -376,36 +290,35 @@
     color: white;
     font-size: 1.25rem;
     box-shadow: var(--shadow-md);
-    animation: bounceIn var(--duration-slow) var(--ease-bounce);
 }
 
-/* 🎨 ЦВЕТОВЫЕ СЕКЦИИ */
+/* Цветовые секции */
 .section-primary {
-    background: linear-gradient(135deg, var(--primary-50) 0%, var(--primary-100) 100%);
-    border-left: 4px solid var(--primary-500);
+    background: var(--primary-50);
+    border-left: 4px solid var(--primary);
 }
 
 .section-secondary {
-    background: linear-gradient(135deg, var(--secondary-50) 0%, var(--secondary-100) 100%);
-    border-left: 4px solid var(--secondary-500);
+    background: var(--secondary-50);
+    border-left: 4px solid var(--secondary);
 }
 
 .section-success {
-    background: linear-gradient(135deg, var(--low-50) 0%, var(--low-100) 100%);
-    border-left: 4px solid var(--low-500);
+    background: var(--low-50);
+    border-left: 4px solid var(--low);
 }
 
 .section-warning {
-    background: linear-gradient(135deg, var(--medium-50) 0%, var(--medium-100) 100%);
-    border-left: 4px solid var(--medium-500);
+    background: var(--medium-50);
+    border-left: 4px solid var(--medium);
 }
 
 .section-danger {
-    background: linear-gradient(135deg, var(--critical-50) 0%, var(--critical-100) 100%);
-    border-left: 4px solid var(--critical-500);
+    background: var(--critical-50);
+    border-left: 4px solid var(--critical);
 }
 
-/* 📊 СТАТИСТИЧЕСКИЕ БЛОКИ */
+/* Статистические блоки */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -424,18 +337,15 @@
 }
 
 .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--primary-300);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
 }
 
 .stat-value {
     font-size: 2.5rem;
     font-weight: 800;
-    background: var(--gradient-primary);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
     line-height: 1;
     margin-bottom: var(--space-2);
 }
@@ -448,7 +358,7 @@
     letter-spacing: 0.05em;
 }
 
-/* 🎯 DIVIDERS И SEPARATORS */
+/* Разделители */
 .divider {
     height: 1px;
     background: var(--border-color);
@@ -458,10 +368,10 @@
 
 .divider-gradient {
     height: 2px;
-    background: var(--gradient-primary);
+    background: var(--primary);
     margin: var(--space-8) 0;
     border: none;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-xl);
     opacity: 0.6;
 }
 
@@ -474,7 +384,7 @@
     border: none;
 }
 
-/* 🌊 SCROLLABLE AREAS */
+/* Прокручиваемые области */
 .scrollable {
     overflow-y: auto;
     max-height: 400px;
@@ -493,20 +403,20 @@
 
 .scrollable::-webkit-scrollbar-track {
     background: var(--surface-2);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-xl);
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-    background: var(--primary-300);
-    border-radius: var(--radius-full);
+    background: var(--primary);
+    border-radius: var(--radius-xl);
     transition: background var(--duration-fast) var(--ease-out);
 }
 
 .scrollable::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-500);
+    background: var(--primary-dark);
 }
 
-/* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ */
+/* Мобильная адаптация */
 @media (max-width: 1024px) {
     .main-content {
         margin-left: 0;
@@ -522,7 +432,7 @@
     
     .view-container {
         padding: var(--space-6);
-        border-radius: var(--radius-xl);
+        border-radius: var(--radius-lg);
     }
     
     .grid-3 {
@@ -639,9 +549,9 @@
     }
 }
 
-/* 🎭 ТЕМНАЯ ТЕМА АДАПТАЦИИ */
+/* Темная тема */
 [data-theme="dark"] .view-container {
-    background: rgba(16, 22, 35, 0.8);
+    background: var(--surface-2);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -652,7 +562,7 @@
 }
 
 [data-theme="dark"] .search-input:focus {
-    border-color: var(--primary-400);
+    border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
@@ -670,5 +580,5 @@
 }
 
 [data-theme="dark"] .scrollable::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-400);
+    background: var(--primary);
 }

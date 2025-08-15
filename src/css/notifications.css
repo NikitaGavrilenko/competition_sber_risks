@@ -1,0 +1,114 @@
+/* ===== УПРОЩЕННЫЕ УВЕДОМЛЕНИЯ ===== */
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--surface-0);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.5rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 10001;
+    max-width: 400px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success {
+    border-left: 4px solid var(--low);
+}
+
+.notification.warning {
+    border-left: 4px solid var(--medium);
+}
+
+.notification.error {
+    border-left: 4px solid var(--critical);
+}
+
+.notification.info {
+    border-left: 4px solid var(--primary);
+}
+
+.notification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.notification-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.notification-close:hover {
+    color: var(--text-primary);
+}
+
+.notification-message {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.notification-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--primary);
+    transition: width linear;
+}
+
+/* Иконки для уведомлений */
+.notification.success::before {
+    content: '✅';
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+.notification.error::before {
+    content: '❌';
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+.notification.warning::before {
+    content: '⚠️';
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+.notification.info::before {
+    content: 'ℹ️';
+    margin-right: 0.5rem;
+    font-size: 1.1em;
+}
+
+/* Улучшенная анимация появления */
+.notification {
+    transform: translateX(100%) scale(0.8);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.notification.show {
+    transform: translateX(0) scale(1);
+}

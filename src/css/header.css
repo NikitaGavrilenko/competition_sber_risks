@@ -1,20 +1,19 @@
-/* 🔝 HEADER */
+/* ===== УПРОЩЕННЫЙ HEADER ===== */
+
 .header {
     position: fixed;
     top: 0;
     left: var(--sidebar-width);
     right: 0;
     height: var(--header-height);
-    background: var(--glass);
-    backdrop-filter: var(--blur);
-    border-bottom: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-medium);
+    background: var(--surface-0);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
     z-index: 999;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
-    animation: fadeSlideIn 0.5s ease-out 0.1s both;
 }
 
 .header-left {
@@ -26,10 +25,7 @@
 .header-title {
     font-size: 1.5rem;
     font-weight: 700;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary);
 }
 
 .header-stats {
@@ -38,10 +34,10 @@
 }
 
 .stat-chip {
-    background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
+    background: var(--surface-1);
     padding: 0.6rem 1rem;
     border-radius: 20px;
-    border: 1px solid var(--light-5);
+    border: 1px solid var(--border-color);
     font-size: 0.8rem;
     font-weight: 600;
     color: var(--primary);
@@ -49,15 +45,14 @@
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
 }
 
 .stat-chip:hover {
     background: var(--primary);
-    color: var(--light);
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .header-actions {
@@ -66,24 +61,23 @@
     align-items: center;
 }
 
-/* 🔄 VIEW SWITCHER */
+/* Переключатель видов */
 .view-switcher {
     display: flex;
-    background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
-    border: 1px solid var(--light-5);
-    border-radius: var(--border-radius);
+    background: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
     padding: 0.25rem;
     margin-right: 1rem;
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
 }
 
 .view-btn {
     padding: 0.7rem 1rem;
     background: transparent;
     border: none;
-    border-radius: calc(var(--border-radius) - 2px);
-    color: var(--dark-3);
+    border-radius: calc(var(--radius-md) - 2px);
+    color: var(--text-secondary);
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9rem;
@@ -94,23 +88,23 @@
 }
 
 .view-btn:hover {
-    background: linear-gradient(135deg, var(--light-3) 0%, var(--light-2) 100%);
+    background: var(--surface-2);
     color: var(--primary);
     transform: translateY(-1px);
 }
 
 .view-btn.active {
-    background: var(--gradient-primary);
-    color: var(--light);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
     transform: translateY(-1px);
 }
 
-/* 🎮 BUTTONS */
+/* Кнопки */
 .btn {
     padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
@@ -120,12 +114,11 @@
     gap: 0.5rem;
     text-decoration: none;
     font-family: inherit;
-    backdrop-filter: blur(10px);
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-large);
+    box-shadow: var(--shadow-lg);
 }
 
 .btn:focus {
@@ -134,27 +127,27 @@
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
-    color: var(--light);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .btn-primary:hover {
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .btn-secondary {
-    background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
-    color: var(--dark);
-    border: 1px solid var(--light-5);
-    box-shadow: var(--shadow-soft);
+    background: var(--surface-1);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
     background: var(--secondary);
-    color: var(--light);
+    color: white;
     border-color: var(--secondary);
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .btn-icon {
@@ -164,38 +157,52 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
-    border: 1px solid var(--light-5);
+    background: var(--surface-1);
+    border: 1px solid var(--border-color);
     color: var(--primary);
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-icon:hover {
     background: var(--accent);
-    color: var(--light);
+    color: white;
     transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
-/* 🎯 MOBILE MENU BUTTON */
+/* Кнопка мобильного меню */
 .mobile-menu-btn {
     display: none;
-    background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
-    border: 1px solid var(--light-5);
-    border-radius: var(--border-radius);
+    background: var(--surface-1);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
     padding: 0.75rem;
     color: var(--primary);
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: var(--shadow-soft);
-    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
 }
 
 .mobile-menu-btn:hover {
     background: var(--primary);
-    color: var(--light);
+    color: white;
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.header-title {
+    font-variation-settings: 'wght' 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: all 0.3s ease;
+}
+
+/* Параллакс эффект для header */
+.header {
+    background-image: linear-gradient(135deg, transparent 0%, rgba(59, 130, 246, 0.05) 100%);
+    background-attachment: fixed;
 }

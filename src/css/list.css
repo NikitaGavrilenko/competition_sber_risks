@@ -1,11 +1,11 @@
-/* 📋 СПИСОК РИСКОВ */
+/* ===== УПРОЩЕННЫЙ СПИСОК РИСКОВ ===== */
+
 .list-container {
-    background: var(--light);
-    border-radius: var(--border-radius-lg);
+    background: var(--surface-0);
+    border-radius: var(--radius-lg);
     padding: 2rem;
-    border: 1px solid var(--light-5);
-    box-shadow: var(--shadow-large);
-    animation: fadeSlideIn 0.6s ease-out;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
 }
 
 .list-header {
@@ -16,36 +16,32 @@
 .list-title {
     font-size: 2rem;
     font-weight: 700;
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
 .list-subtitle {
-    color: var(--dark-3);
+    color: var(--text-secondary);
     font-size: 1rem;
     font-weight: 500;
 }
 
 .list-table-container {
     overflow-x: auto;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
 }
 
 .risk-table {
     width: 100%;
     border-collapse: collapse;
-    background: var(--light);
+    background: var(--surface-0);
     font-size: 0.9rem;
 }
 
 .risk-table th {
-    background: var(--gradient-primary);
-    color: var(--light);
+    background: var(--primary);
+    color: white;
     padding: 1.2rem 1rem;
     text-align: left;
     font-weight: 700;
@@ -86,7 +82,7 @@
 
 .risk-table td {
     padding: 1.2rem 1rem;
-    border-bottom: 1px solid var(--light-5);
+    border-bottom: 1px solid var(--border-color);
     transition: all 0.3s ease;
     vertical-align: middle;
 }
@@ -96,7 +92,7 @@
 }
 
 .risk-table tr:hover {
-    background: linear-gradient(135deg, var(--light-3) 0%, var(--light-2) 100%);
+    background: var(--surface-1);
     transform: translateX(4px);
 }
 
@@ -114,29 +110,28 @@
     display: inline-block;
     min-width: 80px;
     text-align: center;
-    backdrop-filter: blur(5px);
 }
 
 .table-risk-level.critical {
-    background: linear-gradient(135deg, var(--critical-light) 0%, #fecaca 100%);
+    background: var(--critical-50);
     color: var(--critical);
     box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
 }
 
 .table-risk-level.high {
-    background: linear-gradient(135deg, var(--high-light) 0%, #fed7aa 100%);
+    background: var(--high-50);
     color: var(--high);
     box-shadow: 0 2px 8px rgba(234, 88, 12, 0.2);
 }
 
 .table-risk-level.medium {
-    background: linear-gradient(135deg, var(--medium-light) 0%, #fef08a 100%);
+    background: var(--medium-50);
     color: var(--medium);
     box-shadow: 0 2px 8px rgba(250, 204, 21, 0.2);
 }
 
 .table-risk-level.low {
-    background: linear-gradient(135deg, var(--low-light) 0%, #bbf7d0 100%);
+    background: var(--low-50);
     color: var(--low);
     box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
 }
@@ -146,7 +141,7 @@
     align-items: center;
     gap: 0.4rem;
     font-size: 0.85rem;
-    color: var(--dark-3);
+    color: var(--text-secondary);
     font-weight: 500;
 }
 
@@ -164,7 +159,7 @@
 .action-btn {
     padding: 0.5rem 1rem;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-md);
     font-size: 0.75rem;
     font-weight: 600;
     cursor: pointer;
@@ -172,30 +167,43 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    backdrop-filter: blur(5px);
 }
 
 .action-btn.primary {
-    background: var(--gradient-primary);
-    color: var(--light);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .action-btn.primary:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .action-btn.secondary {
-    background: linear-gradient(135deg, var(--light-3) 0%, var(--light-2) 100%);
-    color: var(--dark-3);
-    border: 1px solid var(--light-4);
+    background: var(--surface-1);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
 }
 
 .action-btn.secondary:hover {
     background: var(--secondary);
-    color: var(--light);
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Улучшенная таблица */
+.risk-table tr {
+    transition: all 0.2s ease;
+}
+
+.risk-table tr:hover {
+    background: var(--light-3);
+    transform: scale(1.01);
+}
+
+.risk-table td {
+    transition: all 0.2s ease;
 }

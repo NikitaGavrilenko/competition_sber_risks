@@ -1,99 +1,88 @@
-/* ===== ГЛАВНЫЙ CSS ФАЙЛ - ИМПОРТ ВСЕХ МОДУЛЕЙ ===== */
+/* ===== УПРОЩЕННЫЙ CSS ФАЙЛ - ОСНОВНЫЕ ФУНКЦИИ ===== */
 
-/* 1. Переменные и темы */
+/* 1. Базовые переменные */
 @import url('./variables.css');
 
-/* 2. Анимации и эффекты */
-@import url('./animations.css');
-
-/* 3. Базовые стили */
+/* 2. Базовые стили */
 @import url('./base.css');
 
-/* 4. Основная структура */
+/* 3. Основная структура */
 @import url('./layout.css');
 
-/* 5. Боковая панель */
+/* 4. Боковая панель */
 @import url('./sidebar.css');
 
-/* 6. Заголовок */
+/* 5. Заголовок */
 @import url('./header.css');
 
-/* 7. Матрица рисков */
+/* 6. Матрица рисков */
 @import url('./matrix.css');
 
-/* 8. Карточки */
+/* 7. Карточки */
 @import url('./cards.css');
 
-/* 9. Список */
+/* 8. Список */
 @import url('./list.css');
 
-/* 10. Модальные окна */
+/* 9. Модальные окна */
 @import url('./modal.css');
 
-/* 11. Уведомления */
+/* 10. Уведомления */
 @import url('./notifications.css');
 
-/* 12. Дополнительные стили кнопок */
+/* 11. Кнопки */
 @import url('./buttons.css');
 
-/* 13. Адаптивность */
+/* 12. Адаптивность */
 @import url('./responsive.css');
 
-/* ===== ДОПОЛНИТЕЛЬНЫЕ ГЛОБАЛЬНЫЕ СТИЛИ ===== */
+/* 13. Scrollbars */
+@import url('./scrollbar.css');
 
-/* Улучшенная прокрутка */
+/* 14. Tooltips */
+@import url('./tooltips.css');
+
+
+/* ===== БАЗОВЫЕ СТИЛИ ===== */
+
+/* Простая прокрутка */
 ::-webkit-scrollbar {
     width: 8px;
-    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--light-3);
-    border-radius: 4px;
+    background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    background: #888;
     border-radius: 4px;
-    transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+    background: #555;
 }
 
-/* Улучшенное выделение текста */
+/* Базовое выделение текста */
 ::selection {
-    background: var(--primary);
-    color: var(--light);
-}
-
-::-moz-selection {
-    background: var(--primary);
-    color: var(--light);
+    background: #6366f1;
+    color: white;
 }
 
 /* Фокус для доступности */
 *:focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid #6366f1;
     outline-offset: 2px;
-    border-radius: 4px;
 }
 
-/* Плавные переходы для всех интерактивных элементов */
-button,
-input,
-select,
-textarea,
-a {
-    transition: all 0.3s ease;
+/* Простые переходы */
+button, input, select, textarea, a {
+    transition: all 0.2s ease;
 }
 
 /* Отключение анимаций для пользователей с предпочтением reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;

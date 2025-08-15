@@ -1,11 +1,11 @@
-/* 🃏 КАРТОЧКИ РИСКОВ */
+/* ===== УПРОЩЕННЫЕ КАРТОЧКИ РИСКОВ ===== */
+
 .cards-container {
-    background: var(--light);
-    border-radius: var(--border-radius-lg);
+    background: var(--surface-0);
+    border-radius: var(--radius-lg);
     padding: 2rem;
-    border: 1px solid var(--light-5);
-    box-shadow: var(--shadow-large);
-    animation: fadeSlideIn 0.6s ease-out;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
 }
 
 .cards-header {
@@ -16,15 +16,12 @@
 .cards-title {
     font-size: 2rem;
     font-weight: 700;
-    background: var(--gradient-hero);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary);
     margin-bottom: 0.5rem;
 }
 
 .cards-subtitle {
-    color: var(--dark-3);
+    color: var(--text-secondary);
     font-size: 1rem;
     font-weight: 500;
 }
@@ -37,16 +34,15 @@
 }
 
 .risk-card {
-    background: linear-gradient(135deg, var(--light) 0%, #f8fafc 100%);
-    border: 2px solid var(--light-5);
-    border-radius: var(--border-radius-lg);
+    background: var(--surface-0);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
-    box-shadow: var(--shadow-medium);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
 }
 
 .risk-card::before {
@@ -56,45 +52,45 @@
     left: 0;
     right: 0;
     height: 4px;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .risk-card.critical::before { 
-    background: linear-gradient(90deg, var(--critical) 0%, #b91c1c 100%); 
+    background: var(--critical); 
 }
 .risk-card.high::before { 
-    background: linear-gradient(90deg, var(--high) 0%, #c2410c 100%); 
+    background: var(--high); 
 }
 .risk-card.medium::before { 
-    background: linear-gradient(90deg, var(--medium) 0%, #d97706 100%); 
+    background: var(--medium); 
 }
 .risk-card.low::before { 
-    background: linear-gradient(90deg, var(--low) 0%, #15803d 100%); 
+    background: var(--low); 
 }
 
 .risk-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px) rotateY(2deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     border-color: var(--primary);
 }
 
 .risk-card.critical:hover {
-    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.2);
     border-color: var(--critical);
 }
 
 .risk-card.high:hover {
-    box-shadow: 0 20px 40px rgba(234, 88, 12, 0.2);
+    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.2);
     border-color: var(--high);
 }
 
 .risk-card.medium:hover {
-    box-shadow: 0 20px 40px rgba(250, 204, 21, 0.2);
+    box-shadow: 0 8px 20px rgba(250, 204, 21, 0.2);
     border-color: var(--medium);
 }
 
 .risk-card.low:hover {
-    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
     border-color: var(--low);
 }
 
@@ -109,7 +105,7 @@
 .card-title {
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--text-primary);
     margin: 0;
     line-height: 1.4;
     flex: 1;
@@ -123,50 +119,48 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
     flex-shrink: 0;
-    backdrop-filter: blur(10px);
 }
 
 .risk-level-badge.critical {
-    background: linear-gradient(135deg, var(--critical-light) 0%, #fecaca 100%);
+    background: var(--critical-50);
     color: var(--critical);
-    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
 }
 
 .risk-level-badge.high {
-    background: linear-gradient(135deg, var(--high-light) 0%, #fed7aa 100%);
+    background: var(--high-50);
     color: var(--high);
-    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.2);
 }
 
 .risk-level-badge.medium {
-    background: linear-gradient(135deg, var(--medium-light) 0%, #fef08a 100%);
+    background: var(--medium-50);
     color: var(--medium);
-    box-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);
+    box-shadow: 0 2px 8px rgba(250, 204, 21, 0.2);
 }
 
 .risk-level-badge.low {
-    background: linear-gradient(135deg, var(--low-light) 0%, #bbf7d0 100%);
+    background: var(--low-50);
     color: var(--low);
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
 }
 
 .card-category {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, var(--light-3) 0%, var(--light-2) 100%);
-    color: var(--dark-3);
+    background: var(--surface-1);
+    color: var(--text-secondary);
     padding: 0.4rem 0.8rem;
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-sm);
 }
 
 .card-description {
-    color: var(--dark-3);
+    color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -181,21 +175,20 @@
 .metric {
     text-align: center;
     padding: 1rem;
-    background: linear-gradient(135deg, var(--light-3) 0%, var(--light-2) 100%);
-    border-radius: var(--border-radius);
-    backdrop-filter: blur(5px);
+    background: var(--surface-1);
+    border-radius: var(--radius-md);
     transition: all 0.3s ease;
 }
 
 .metric:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .metric-label {
     font-size: 0.7rem;
     font-weight: 700;
-    color: var(--dark-4);
+    color: var(--text-tertiary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 0.5rem;
@@ -205,5 +198,29 @@
 .metric-value {
     font-size: 1rem;
     font-weight: 700;
-    color: var(--dark);
+    color: var(--text-primary);
+}
+
+
+
+/* Добавить в конец файла */
+.risk-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.risk-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.risk-card:hover::before {
+    transform: translateX(100%);
 }
