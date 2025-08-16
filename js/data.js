@@ -1,5 +1,5 @@
 // Данные рисков для карточного интерфейса
-export const risksData = [
+const risksData = [
     // ОПЕРАЦИОННЫЕ И ТЕХНОЛОГИЧЕСКИЕ РИСКИ
     {
         id: 1,
@@ -978,4 +978,9 @@ const riskLevels = {
         color: "#22c55e",
         icon: "fas fa-check-circle"
     }
-}; 
+};
+
+// Делаем данные доступными глобально для совместимости
+window.risks = risksData;
+window.categories = categories;
+window.riskLevels = riskLevels; 

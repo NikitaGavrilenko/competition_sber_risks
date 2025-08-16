@@ -3,324 +3,331 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https:; font-src 'self' https:;">
+    <meta name="description" content="Интерактивная карта рисков для индустрии гостеприимства 2025">
+    <meta name="keywords" content="риски, гостеприимство, отели, управление рисками">
     <title>🎯 Карта рисков гостеприимства 2025</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="src/css/main.css">
+    
+    <!-- Preload критических ресурсов -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="css/style.css" as="style">
+    
+    <!-- Стили -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
 </head>
 <body data-theme="light">
-    <!-- 🌟 Мягкие плавающие частицы -->
-    <div class="floating-particles">
-        <div class="particle" style="left: 15%; width: 2px; height: 2px; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 25%; width: 3px; height: 3px; animation-delay: 3s;"></div>
-        <div class="particle" style="left: 35%; width: 2px; height: 2px; animation-delay: 6s;"></div>
-        <div class="particle" style="left: 45%; width: 3px; height: 3px; animation-delay: 9s;"></div>
-        <div class="particle" style="left: 55%; width: 2px; height: 2px; animation-delay: 12s;"></div>
-        <div class="particle" style="left: 65%; width: 3px; height: 3px; animation-delay: 15s;"></div>
-        <div class="particle" style="left: 75%; width: 2px; height: 2px; animation-delay: 18s;"></div>
-        <div class="particle" style="left: 85%; width: 3px; height: 3px; animation-delay: 21s;"></div>
+    <!-- Фоновые анимированные элементы -->
+    <div class="bg-animation">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
     </div>
 
+    <!-- Главный контейнер -->
     <div class="app-container">
-        <!-- 🎛️ SIDEBAR -->
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <h1>🎯 Карта рисков</h1>
-                <p>Индустрия гостеприимства 2025</p>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>🔍 Поиск и фильтры</h3>
-                
-                <div class="filter-group">
-                    <label class="filter-label">Поиск рисков</label>
-                    <input 
-                        type="text" 
-                        class="search-input" 
-                        id="searchInput"
-                        placeholder="Введите название риска..."
-                        onkeyup="handleSearch()"
-                    >
-                </div>
-
-                <div class="filter-group">
-                    <label class="filter-label">Категория</label>
-                    <select class="filter-select" id="categoryFilter" onchange="filterByCategory()">
-                        <option value="">Все категории</option>
-                        <option value="operational">🔧 Операционные</option>
-                        <option value="financial">💰 Финансовые</option>
-                        <option value="regulatory">📋 Регуляторные</option>
-                        <option value="technological">💻 Технологические</option>
-                        <option value="reputation">🌟 Репутационные</option>
-                        <option value="environmental">🌱 Экологические</option>
-                    </select>
-                </div>
-
-                <div class="filter-group">
-                    <label class="filter-label">Уровень риска</label>
-                    <select class="filter-select" id="levelFilter" onchange="filterByLevel()">
-                        <option value="">Все уровни</option>
-                        <option value="critical">🔴 Критический</option>
-                        <option value="high">🟠 Высокий</option>
-                        <option value="medium">🟡 Средний</option>
-                        <option value="low">🟢 Низкий</option>
-                    </select>
-                </div>
-                
-                <div class="filter-group">
-                    <button class="btn btn-secondary" onclick="resetFilters()" style="width: 100%; margin-top: 1rem;">
-                        <i class="fas fa-undo"></i>
-                        Сбросить фильтры
-                    </button>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>🎨 Цветовая легенда</h3>
-                <div class="risk-legend">
-                    <div class="legend-item critical">
-                        <div class="legend-color"></div>
-                        <span class="legend-text">Критический</span>
-                    </div>
-                    <div class="legend-item high">
-                        <div class="legend-color"></div>
-                        <span class="legend-text">Высокий</span>
-                    </div>
-                    <div class="legend-item medium">
-                        <div class="legend-color"></div>
-                        <span class="legend-text">Средний</span>
-                    </div>
-                    <div class="legend-item low">
-                        <div class="legend-color"></div>
-                        <span class="legend-text">Низкий</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>📊 Статистика</h3>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="info-label">Всего рисков</span>
-                        <span class="info-value" id="totalRisks">0</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Критических</span>
-                        <span class="info-value" id="criticalCount">0</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Высоких</span>
-                        <span class="info-value" id="highCount">0</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Средних</span>
-                        <span class="info-value" id="mediumCount">0</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Низких</span>
-                        <span class="info-value" id="lowCount">0</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
-
-        <!-- 📱 ОСНОВНОЙ КОНТЕНТ -->
-        <main class="main-content">
-            <!-- 🔝 HEADER -->
-            <header class="header">
+        <!-- Хедер -->
+        <header class="header">
+            <div class="header-container">
                 <div class="header-left">
-                    <button class="mobile-menu-btn" onclick="toggleSidebar()">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <h1 class="header-title">Карта рисков 2025</h1>
-                    <div class="header-stats">
-                        <div class="stat-chip">
-                            <i class="fas fa-shield-alt"></i>
-                            <span id="headerRiskCount">0 рисков</span>
-                        </div>
-                        <div class="stat-chip">
-                            <i class="fas fa-layer-group"></i>
-                            <span id="headerCategoryCount">0 категорий</span>
+                    <div class="logo">
+                        <span class="logo-icon">🎯</span>
+                        <div class="logo-text">
+                            <h1>Карта рисков</h1>
+                            <p>Гостеприимство 2025</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="header-actions">
-                    <div class="view-switcher">
-                        <button class="view-btn active" data-view="matrix" onclick="switchView('matrix')" title="Матрица">
+                <div class="header-center">
+                    <nav class="nav-tabs">
+                        <button class="nav-tab active" data-view="matrix" aria-label="Матрица рисков">
                             <i class="fas fa-th"></i>
+                            <span>Матрица</span>
                         </button>
-                        <button class="view-btn" data-view="cards" onclick="switchView('cards')" title="Карточки">
-                            <i class="fas fa-id-card"></i>
+                        <button class="nav-tab" data-view="cards" aria-label="Карточки рисков">
+                            <i class="fas fa-grip-vertical"></i>
+                            <span>Карточки</span>
                         </button>
-                        <button class="view-btn" data-view="list" onclick="switchView('list')" title="Список">
-                            <i class="fas fa-list"></i>
+                        <button class="nav-tab" data-view="table" aria-label="Таблица рисков">
+                            <i class="fas fa-table"></i>
+                            <span>Таблица</span>
                         </button>
-                    </div>
-                    <button class="btn btn-primary" onclick="exportToExcel()">
+                    </nav>
+                </div>
+                
+                <div class="header-right">
+                    <button class="btn-icon" id="themeToggle" aria-label="Переключить тему">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-icon" id="settingsBtn" aria-label="Настройки">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="btn-primary" id="exportBtn">
                         <i class="fas fa-download"></i>
-                        Excel
-                    </button>
-                    <button class="btn btn-secondary" onclick="exportToCSV()">
-                        <i class="fas fa-file-csv"></i>
-                        CSV
-                    </button>
-                    <button class="btn btn-primary" onclick="openDashboard()" title="Dashboard">
-                        <i class="fas fa-chart-line"></i>
-                        Dashboard
-                    </button>
-                    <button class="btn btn-secondary" onclick="openRiskForm()" title="Добавить риск">
-                        <i class="fas fa-plus"></i>
-                        Добавить риск
-                    </button>
-                    <button class="btn-icon" onclick="toggleTheme()" title="Переключить тему">
-                        <i class="fas fa-moon" id="themeIcon"></i>
+                        <span>Экспорт</span>
                     </button>
                 </div>
-            </header>
+            </div>
+        </header>
 
-            <!-- 🔍 ПОИСК -->
-            <div class="search-section">
+        <!-- Контрол панель -->
+        <section class="controls-panel">
+            <div class="controls-container">
+                <!-- Поиск -->
                 <div class="search-container">
-                    <input 
-                        type="text" 
-                        class="search-input" 
-                        placeholder="🔍 Найти риск по названию, описанию или последствиям..."
-                        id="globalSearch"
-                        onkeyup="globalSearch()"
-                    >
-                    <i class="fas fa-search search-icon"></i>
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            placeholder="Поиск рисков по названию, категории или последствиям..."
+                            id="searchInput"
+                        >
+                        <button class="search-clear" id="searchClear" aria-label="Очистить поиск">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Фильтры -->
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="categoryFilter">Категория</label>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="">Все категории</option>
+                            <option value="operational">Операционные</option>
+                            <option value="hr">Кадровые</option>
+                            <option value="financial">Финансовые</option>
+                            <option value="reputation">Репутационные</option>
+                            <option value="security">Безопасность</option>
+                            <option value="external">Внешние</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="levelFilter">Уровень</label>
+                        <select id="levelFilter" class="filter-select">
+                            <option value="">Все уровни</option>
+                            <option value="critical">Критический</option>
+                            <option value="high">Высокий</option>
+                            <option value="medium">Средний</option>
+                            <option value="low">Низкий</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="probabilityFilter">Вероятность</label>
+                        <select id="probabilityFilter" class="filter-select">
+                            <option value="">Все вероятности</option>
+                            <option value="Высокая">Высокая</option>
+                            <option value="Средняя">Средняя</option>
+                            <option value="Низкая">Низкая</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn-secondary" id="resetFilters">
+                        <i class="fas fa-undo"></i>
+                        Сбросить
+                    </button>
                 </div>
             </div>
+        </section>
 
-            <!-- 📊 КОНТЕНТНАЯ ОБЛАСТЬ -->
-            <div class="content-area">
-                <!-- 🎯 МАТРИЦА РИСКОВ -->
-                <div class="matrix-container" id="matrixView">
-                    <div class="matrix-header">
-                        <h2 class="matrix-title">Матрица рисков 5×5</h2>
-                        <p class="matrix-subtitle">Вероятность × Воздействие</p>
+        <!-- Статистика -->
+        <section class="stats-panel">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon critical">
+                        <i class="fas fa-exclamation-triangle"></i>
                     </div>
-
-                    <div class="matrix-grid" id="matrixGrid">
-                        <!-- Матрица будет загружена динамически -->
+                    <div class="stat-content">
+                        <div class="stat-number" id="criticalCount">0</div>
+                        <div class="stat-label">Критических</div>
                     </div>
                 </div>
-
-                <!-- 🃏 ВИД КАРТОЧЕК -->
-                <div class="cards-container" id="cardsView" style="display: none;">
-                    <div class="cards-header">
-                        <h2 class="cards-title">Карточки рисков</h2>
-                        <p class="cards-subtitle">Все риски в удобном формате карточек</p>
+                
+                <div class="stat-card">
+                    <div class="stat-icon high">
+                        <i class="fas fa-exclamation-circle"></i>
                     </div>
-                    <div class="cards-grid" id="cardsGrid">
-                        <!-- Карточки будут загружены динамически -->
+                    <div class="stat-content">
+                        <div class="stat-number" id="highCount">0</div>
+                        <div class="stat-label">Высоких</div>
                     </div>
                 </div>
-
-                <!-- 📋 ВИД СПИСКА -->
-                <div class="list-container" id="listView" style="display: none;">
-                    <div class="list-header">
-                        <h2 class="list-title">Список рисков</h2>
-                        <p class="list-subtitle">Табличное представление всех рисков</p>
+                
+                <div class="stat-card">
+                    <div class="stat-icon medium">
+                        <i class="fas fa-minus-circle"></i>
                     </div>
-                    <div class="list-table-container">
-                        <table class="risk-table" id="riskTable">
-                            <thead>
-                                <tr>
-                                    <th onclick="window.sortTable(1)">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                        Название риска
-                                        <i class="fas fa-sort sort-icon"></i>
-                                    </th>
-                                    <th onclick="window.sortTable(2)">
-                                        <i class="fas fa-layer-group"></i>
-                                        Категория
-                                        <i class="fas fa-sort sort-icon"></i>
-                                    </th>
-                                    <th onclick="window.sortTable(3)">
-                                        <i class="fas fa-signal"></i>
-                                        Уровень
-                                        <i class="fas fa-sort sort-icon"></i>
-                                    </th>
-                                    <th onclick="window.sortTable(4)">
-                                        <i class="fas fa-percentage"></i>
-                                        Вероятность
-                                        <i class="fas fa-sort sort-icon"></i>
-                                    </th>
-                                    <th onclick="window.sortTable(5)">
-                                        <i class="fas fa-impact"></i>
-                                        Воздействие
-                                        <i class="fas fa-sort sort-icon"></i>
-                                    </th>
-                                    <th>
-                                        <i class="fas fa-cog"></i>
-                                        Действия
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="riskTableBody">
-                                <!-- Строки таблицы будут загружены динамически -->
-                            </tbody>
-                        </table>
+                    <div class="stat-content">
+                        <div class="stat-number" id="mediumCount">0</div>
+                        <div class="stat-label">Средних</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon low">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="lowCount">0</div>
+                        <div class="stat-label">Низких</div>
+                    </div>
+                </div>
+                
+                <div class="stat-card total">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-number" id="totalCount">0</div>
+                        <div class="stat-label">Всего рисков</div>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Матрица рисков -->
+            <section class="view-container" id="matrixView">
+                <div class="section-header">
+                    <h2>Матрица рисков 5×5</h2>
+                    <p>Интерактивная визуализация рисков по вероятности и воздействию</p>
+                </div>
+                
+                <div class="matrix-container">
+                    <div class="matrix-wrapper">
+                        <!-- Оси подписей -->
+                        <div class="matrix-axis-y">
+                            <div class="axis-label">Воздействие</div>
+                            <div class="axis-values">
+                                <span>Катастрофическое</span>
+                                <span>Серьезное</span>
+                                <span>Умеренное</span>
+                                <span>Незначительное</span>
+                                <span>Минимальное</span>
+                            </div>
+                        </div>
+                        
+                        <div class="matrix-content">
+                            <div class="matrix-grid" id="matrixGrid">
+                                <!-- Ячейки будут созданы динамически -->
+                            </div>
+                            
+                            <div class="matrix-axis-x">
+                                <div class="axis-values">
+                                    <span>Редкая</span>
+                                    <span>Маловероятная</span>
+                                    <span>Возможная</span>
+                                    <span>Вероятная</span>
+                                    <span>Почти неизбежная</span>
+                                </div>
+                                <div class="axis-label">Вероятность</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Легенда -->
+                    <div class="matrix-legend">
+                        <h3>Уровни рисков</h3>
+                        <div class="legend-items">
+                            <div class="legend-item critical">
+                                <div class="legend-color"></div>
+                                <span>Критический</span>
+                            </div>
+                            <div class="legend-item high">
+                                <div class="legend-color"></div>
+                                <span>Высокий</span>
+                            </div>
+                            <div class="legend-item medium">
+                                <div class="legend-color"></div>
+                                <span>Средний</span>
+                            </div>
+                            <div class="legend-item low">
+                                <div class="legend-color"></div>
+                                <span>Низкий</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Карточки рисков -->
+            <section class="view-container hidden" id="cardsView">
+                <div class="section-header">
+                    <h2>Карточки рисков</h2>
+                    <p>Детальная информация по каждому риску в удобном формате</p>
+                </div>
+                
+                <div class="cards-grid" id="cardsGrid">
+                    <!-- Карточки будут созданы динамически -->
+                </div>
+            </section>
+
+            <!-- Таблица рисков -->
+            <section class="view-container hidden" id="tableView">
+                <div class="section-header">
+                    <h2>Таблица рисков</h2>
+                    <p>Сводная информация в табличном формате</p>
+                </div>
+                
+                <div class="table-container">
+                    <table class="risks-table" id="risksTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Название</th>
+                                <th>Категория</th>
+                                <th>Уровень</th>
+                                <th>Вероятность</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <!-- Строки будут созданы динамически -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </main>
     </div>
 
-    <!-- 💫 МОДАЛЬНОЕ ОКНО -->
-    <div class="modal" id="riskModal">
-        <div class="modal-content">
+    <!-- Модальное окно деталей риска -->
+    <div class="modal-overlay" id="riskModal">
+        <div class="modal-container">
             <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle">Детали риска</h2>
-                <button class="modal-close" onclick="closeModal()">
+                <h3 id="modalTitle">Детали риска</h3>
+                <button class="modal-close" id="modalClose" aria-label="Закрыть">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body" id="modalBody">
-                <!-- Содержимое будет загружено динамически -->
+                <!-- Контент будет добавлен динамически -->
             </div>
         </div>
     </div>
 
-    <!-- 📊 МОДАЛЬНОЕ ОКНО DASHBOARD -->
-    <div class="modal" id="dashboardModal">
-        <div class="modal-content modal-large">
-            <div class="modal-header">
-                <h2 class="modal-title">📊 Dashboard рисков</h2>
-                <button class="modal-close" onclick="closeDashboard()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="dashboardModalBody">
-                <!-- Dashboard будет загружен динамически -->
-            </div>
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Загрузка данных...</p>
         </div>
     </div>
 
-    <!-- 📝 МОДАЛЬНОЕ ОКНО ФОРМЫ РИСКА -->
-    <div class="modal" id="riskFormModal">
-        <div class="modal-content modal-large">
-            <div class="modal-header">
-                <h2 class="modal-title">📝 Добавить новый риск</h2>
-                <button class="modal-close" onclick="closeRiskForm()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="riskFormModalBody">
-                <!-- Форма риска будет загружена динамически -->
-            </div>
-        </div>
-    </div>
-
-    <!-- 🎪 УВЕДОМЛЕНИЯ -->
-    <div class="notification" id="notification">
-        <span id="notificationText"></span>
-    </div>
-
-    <script type="module" src="src/js/app.js"></script>
+    <!-- Скрипты -->
+    <script src="js/data.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
