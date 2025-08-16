@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https:; font-src 'self' https:;">
     <title>🎯 Карта рисков гостеприимства 2025</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -166,6 +167,14 @@
                         <i class="fas fa-file-csv"></i>
                         CSV
                     </button>
+                    <button class="btn btn-primary" onclick="openDashboard()" title="Dashboard">
+                        <i class="fas fa-chart-line"></i>
+                        Dashboard
+                    </button>
+                    <button class="btn btn-secondary" onclick="openRiskForm()" title="Добавить риск">
+                        <i class="fas fa-plus"></i>
+                        Добавить риск
+                    </button>
                     <button class="btn-icon" onclick="toggleTheme()" title="Переключить тему">
                         <i class="fas fa-moon" id="themeIcon"></i>
                     </button>
@@ -273,6 +282,36 @@
             </div>
             <div class="modal-body" id="modalBody">
                 <!-- Содержимое будет загружено динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 📊 МОДАЛЬНОЕ ОКНО DASHBOARD -->
+    <div class="modal" id="dashboardModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 class="modal-title">📊 Dashboard рисков</h2>
+                <button class="modal-close" onclick="closeDashboard()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="dashboardModalBody">
+                <!-- Dashboard будет загружен динамически -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 📝 МОДАЛЬНОЕ ОКНО ФОРМЫ РИСКА -->
+    <div class="modal" id="riskFormModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2 class="modal-title">📝 Добавить новый риск</h2>
+                <button class="modal-close" onclick="closeRiskForm()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="riskFormModalBody">
+                <!-- Форма риска будет загружена динамически -->
             </div>
         </div>
     </div>

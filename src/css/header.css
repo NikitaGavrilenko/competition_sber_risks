@@ -49,6 +49,9 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+    /* Обеспечиваем видимость всех кнопок */
+    flex-wrap: nowrap;
+    overflow: visible;
 }
 
 /* Переключатель видов */
@@ -97,6 +100,16 @@
     gap: 0.5rem;
     text-decoration: none;
     font-family: inherit;
+    /* Обеспечиваем видимость кнопок */
+    min-width: fit-content;
+    white-space: nowrap;
+}
+
+/* Специально для кнопки Dashboard */
+.btn[onclick*="openDashboard"] {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .btn-primary {

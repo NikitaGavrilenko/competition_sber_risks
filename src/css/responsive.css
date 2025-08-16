@@ -56,6 +56,9 @@
     
     .header-actions {
         gap: 0.5rem;
+        /* Обеспечиваем видимость кнопок на мобильных */
+        flex-wrap: nowrap;
+        overflow: visible;
     }
     
     .matrix-grid {
@@ -198,6 +201,16 @@
     .btn {
         padding: 0.5rem 0.75rem;
         font-size: 0.75rem;
+        /* Обеспечиваем видимость кнопок на очень маленьких экранах */
+        min-width: fit-content;
+        white-space: nowrap;
+    }
+    
+    /* Специально для кнопки Dashboard на маленьких экранах */
+    .btn[onclick*="openDashboard"] {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     .modal-content {

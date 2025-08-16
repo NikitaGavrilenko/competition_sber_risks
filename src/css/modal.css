@@ -31,6 +31,12 @@
     position: relative;
 }
 
+.modal-content.modal-large {
+    max-width: 90%;
+    width: 95%;
+    max-height: 90vh;
+}
+
 .modal-header {
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--border-color);
